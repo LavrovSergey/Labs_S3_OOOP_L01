@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\IPv6\IPv6.hpp" />
     <ClInclude Include="src\Helper\BitManipulator.hpp" />
     <ClInclude Include="src\IPv4\IPv4.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\IPv6\IPv6.cpp" />
     <ClCompile Include="src\IPv4\IPv4.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
