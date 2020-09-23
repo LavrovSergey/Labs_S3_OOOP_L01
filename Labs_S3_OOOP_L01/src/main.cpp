@@ -5,5 +5,5 @@
 
 int main()
 {
-	PriorQueue<int> queue = Tree<int>();
+	PriorQueue<int> queue = TreeAVL<int>();
 }

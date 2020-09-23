@@ -140,8 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\PriorQueue\PriorQueue.hpp" />
-    <ClInclude Include="src\PriorQueue\Tree\Tree.hpp" />
-    <ClInclude Include="src\PriorQueue\Tree\TreeNode.hpp" />
+    <ClInclude Include="src\PriorQueue\Tree\TreeAVL.hpp" />
+    <ClInclude Include="src\PriorQueue\Tree\NodeTreeAVL.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
