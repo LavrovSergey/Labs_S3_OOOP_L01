@@ -18,10 +18,10 @@
     <ClInclude Include="src\PriorQueue\PriorQueue.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\PriorQueue\Tree\TreeNode.hpp">
+    <ClInclude Include="src\PriorQueue\Tree\NodeTreeAVL.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\PriorQueue\Tree\Tree.hpp">
+    <ClInclude Include="src\PriorQueue\Tree\TreeAVL.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
