@@ -3,6 +3,7 @@
 template <typename T>
 class NodeTreeAVL
 {
+
 public:
 	NodeTreeAVL<T>* left;
 	NodeTreeAVL<T>* right;
@@ -17,7 +18,6 @@ public:
 public:
 	T getValue();
 	unsigned int getPriority();
-	unsigned int getHeight();
 
 };
 
@@ -47,10 +47,4 @@ template<typename T>
 inline unsigned int NodeTreeAVL<T>::getPriority()
 {
 	return priority;
-}
-
-template<typename T>
-inline unsigned int NodeTreeAVL<T>::getHeight()
-{
-	return height;
 }
