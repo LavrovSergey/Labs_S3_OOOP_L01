@@ -35,7 +35,7 @@ private:
 	* \param[in] priority Priority of item on tree.
     * \returns New root of the subtree. 
 	*/
-	NodeTreeAVL<T>* insert(NodeTreeAVL<T>* target, T value, int priority);
+	NodeTreeAVL<T>* insertNode(NodeTreeAVL<T>* target, T value, int priority);
 
 	/*! Recursive function to delete a node with given data from subtree
 	* \param[in] target Where to delete.
@@ -235,18 +235,20 @@ inline void TreeAVL<T>::push(T value, unsigned int priority)
 {
 	if (!root)
 		root = new NodeTreeAVL<T>(value, priority);
+	else
+		root = insertNode(root, value, priority);
 }
 
 template<typename T>
-inline NodeTreeAVL<T>* TreeAVL<T>::insert(NodeTreeAVL<T>* target, T value, int priority)
+inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, int priority)
 {
 	if (!target)
 		return(newNode(value, priority));
 
 	if (priority < target->priority)
-		target->left = insert(target->left, value, priority);
+		target->left = insertNode(target->left, value, priority);
 	else 
-		target->right = insert(target->right, value, priority);
+		target->right = insertNode(target->right, value, priority);
 
 
 	// Update height of this ancestor node
@@ -289,13 +291,17 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insert(NodeTreeAVL<T>* target, T value, int p
 template<typename T>
 inline T TreeAVL<T>::pop()
 {
-	return T();
+	if (!root) return NULL;
+	auto value = root->value;
+	root = deleteNode(root, root->value, root->priority);
+	return value;
 }
 
 template<typename T>
 inline T TreeAVL<T>::predict()
 {
-	return T();
+	if (!root) return NULL;
+	else return root->value;
 }
 
 template<typename T>
