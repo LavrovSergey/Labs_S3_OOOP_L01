@@ -22,7 +22,7 @@ public:
 	T value;
 
 	//! Priority of this value.
-	unsigned int priority;
+	int priority;
 
 	//! Height of the current node
 	unsigned int height;

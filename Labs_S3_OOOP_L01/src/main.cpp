@@ -15,5 +15,12 @@
 */
 int main()
 {
-	PriorQueue<int> queue = TreeAVL<int>();
+	PriorQueue<int>* queue = new TreeAVL<int>();
+	queue->push(1, 1);
+	queue->push(2, 2);
+	queue->push(4, 4);
+	queue->push(3, 3);
+	queue->push(7, 7);
+	queue->push(5, 5);
+	std::cout << queue->print();
 }

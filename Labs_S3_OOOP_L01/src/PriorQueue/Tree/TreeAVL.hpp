@@ -1,4 +1,4 @@
-/*! AVL Tree class.
+﻿/*! AVL Tree class.
 * \file TreeAVL.hpp
 * \author Maksym Rasakhatskyi
 * \version 1.0 15/09/20
@@ -11,6 +11,7 @@
 #include "../PriorQueue.hpp"
 
 #include <algorithm>
+#include <string>
 
 template <typename T>
 class TreeAVL : public PriorQueue<T>
@@ -46,9 +47,28 @@ private:
 	* \returns New root of the subtree.
 	*/
 	NodeTreeAVL<T>* deleteNode(NodeTreeAVL<T>* target, T value, int priority);
+
+	/*! Searches branch for mininmum priority value. 
+	* \param[in] node Node to start search.
+	* \returns Node with minimum priority value in that tree.
+	*/
+	NodeTreeAVL<T>* findLeftMost(NodeTreeAVL<T>* node);
+
+	/*! Recursive converts tree to text from given node.
+	* \param[in] prefix Offset for the level.
+	* \param[in] node Start of the tree.
+	* \param[in] isLeft Makes prefix vertical or horizontal.
+	* \returns Subtree in the string form.
+	*/
+	std::string printNode(const std::string& prefix, const NodeTreeAVL<T>* node, bool isLeft);
 public:
 	/*! Creates empty tree with NULL root. */
 	TreeAVL();
+
+	/*! Prints whole tree to string.
+	* \returns Whole tree in the string form.
+	*/
+	std::string print() override;
 
 	/*! Pushes value with priority to AVL Tree.
 	* \param[in] value Value to insert.
@@ -94,14 +114,14 @@ inline NodeTreeAVL<T>* TreeAVL<T>::rotateRight(NodeTreeAVL<T>* node)
 	//recalculate heights  
 	node->height =
 		std::max(
-			node->left->getHeight(),
-			node->right->getHeight())
+			getNodeHeight(node->left),
+			getNodeHeight(node->right))
 		+ 1;
 
 	newNode->height =
 		std::max(
-			newNode->left->getHeight(),
-			newNode->right->getHeight())
+			getNodeHeight(newNode->left),
+			getNodeHeight(newNode->right))
 		+ 1;
 
 	//new root  
@@ -111,7 +131,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::rotateRight(NodeTreeAVL<T>* node)
 template<typename T>
 inline NodeTreeAVL<T>* TreeAVL<T>::rotateLeft(NodeTreeAVL<T>* node)
 {
-	auto newNode = node->right;
+	NodeTreeAVL<T>* newNode = node->right;
 
 	//swap
 	auto buffer = newNode->left;
@@ -121,11 +141,15 @@ inline NodeTreeAVL<T>* TreeAVL<T>::rotateLeft(NodeTreeAVL<T>* node)
 	// recalculate heights  
 	node->height =
 		std::max(
-			node->left->getHeight(),
-			node->right->getHeight())
+			getNodeHeight(node->left),
+			getNodeHeight(node->right))
 		+ 1;
-	newNode->height = std::max(height(newNode->left),
-		height(newNode->right)) + 1;
+
+	newNode->height = 
+		std::max(
+			getNodeHeight(newNode->left),
+			getNodeHeight(newNode->right)) 
+		+ 1;
 
 	// Return new root  
 	return newNode;
@@ -137,7 +161,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::deleteNode(NodeTreeAVL<T>* target, T value, i
 	if (!target)
 		return target;
 
-	if (key < target->priority)
+	if (priority < target->priority)
 	{
 		target->left = deleteNode(target->left, value, priority);
 	}
@@ -168,15 +192,15 @@ inline NodeTreeAVL<T>* TreeAVL<T>::deleteNode(NodeTreeAVL<T>* target, T value, i
 		}
 		else
 		{
-			auto temp = minValueNode(target->right);
+			NodeTreeAVL<T>* temp = findLeftMost(target->right);
 
-			target->key = temp->key;
+			target->priority = temp->priority;
 			target->value = temp->value;
 
 			target->right = deleteNode(
 				target->right,
 				temp->value,
-				temp->key);
+				temp->priority);
 		}
 	}
 
@@ -185,44 +209,88 @@ inline NodeTreeAVL<T>* TreeAVL<T>::deleteNode(NodeTreeAVL<T>* target, T value, i
 		return target;
 
 	// upd height
-	target->height = 1 + max(height(target->left),
-		height(target->right));
+	target->height = std::max(
+		getNodeHeight(target->left),
+		getNodeHeight(target->right))
+		+ 1;
 
-	int balance = getBalance(target);
+	int balance = getNodeBalance(target);
 
 	// Left Left Case  
 	if (balance > 1 &&
-		getBalance(target->left) >= 0)
-		return rightRotate(target);
+		getNodeBalance(target->left) >= 0)
+		return rotateRight(target);
 
 	// Left Right Case  
 	if (balance > 1 &&
-		getBalance(target->left) < 0)
+		getNodeBalance(target->left) < 0)
 	{
-		target->left = leftRotate(target->left);
-		return rightRotate(target);
+		target->left = rotateLeft(target->left);
+		return rotateRight(target);
 	}
 
 	// Right Right Case  
 	if (balance < -1 &&
-		getBalance(target->right) <= 0)
-		return leftRotate(target);
+		getNodeBalance(target->right) <= 0)
+		return rotateLeft(target);
 
 	// Right Left Case  
 	if (balance < -1 &&
-		getBalance(target->right) > 0)
+		getNodeBalance(target->right) > 0)
 	{
-		target->right = rightRotate(target->right);
-		return leftRotate(target);
+		target->right = rotateRight(target->right);
+		return rotateLeft(target);
 	}
 
 	return target;
 }
 
 template<typename T>
+inline NodeTreeAVL<T>* TreeAVL<T>::findLeftMost(NodeTreeAVL<T>* node)
+{
+	NodeTreeAVL<T>* current = node;
+	while (current->left != NULL)
+		current = current->left;
+	return current;
+}
+
+template<typename T>
+inline std::string TreeAVL<T>::printNode(const std::string& prefix, const NodeTreeAVL<T>* node, bool isLeft)
+{
+	std::string result;
+	if (node)
+	{
+		result = prefix;
+
+		const unsigned char opened = 195;
+		const unsigned char closed = 192;
+		const unsigned char line = 196;
+
+		//give direction
+		result += (isLeft ? opened : closed);
+		result += line;
+		result += line;
+
+		//add node value
+		result += "[p: " + std::to_string(node->priority) + "  v: " + std::to_string(node->value) + "]\n";
+
+		//enter the next tree level - left and right branch
+		result += printNode(prefix + (isLeft ? "│   " : "    "), node->left, true);
+		result += printNode(prefix + (isLeft ? "│   " : "    "), node->right, false);
+	}
+	return result;
+}
+
+template<typename T>
 inline TreeAVL<T>::TreeAVL()
 {
 	root = nullptr;
+}
+
+template<typename T>
+inline std::string TreeAVL<T>::print()
+{
+	return printNode("", root, false);
 }
 
 template<typename T>
@@ -238,7 +306,7 @@ template<typename T>
 inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, int priority)
 {
 	if (!target)
-		return(newNode(value, priority));
+		return(new NodeTreeAVL<T>(value, priority));
 
 	if (priority < target->priority)
 		target->left = insertNode(target->left, value, priority);
@@ -247,7 +315,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, i
 
 
 	// Update height of this ancestor node
-	target->height = max(
+	target->height = std::max(
 		getNodeHeight(target->left),
 		getNodeHeight(target->right));
 
@@ -257,27 +325,27 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, i
 	// Left Left Case  
 	if (balance > 1 &&
 		priority < target->left->priority)
-		return rightRotate(target);
+		return rotateRight(target);
 
 	// Right Right Case  
 	if (balance < -1 &&
 		priority > target->right->priority)
-		return leftRotate(target);
+		return rotateLeft(target);
 
 	// Left Right Case  
 	if (balance > 1 &&
 		priority > target->left->priority)
 	{
-		target->left = leftRotate(target->left);
-		return rightRotate(target);
+		target->left = rotateLeft(target->left);
+		return rotateRight(target);
 	}
 
 	// Right Left Case  
 	if (balance < -1 &&
 		priority < target->right->priority)
 	{
-		target->right = rightRotate(target->right);
-		return leftRotate(target);
+		target->right = rotateLeft(target->right);
+		return rotateRight(target);
 	}
 
 	return target;
