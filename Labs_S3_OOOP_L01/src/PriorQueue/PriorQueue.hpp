@@ -14,10 +14,10 @@ class PriorQueue
 {
 public:
 	/*! Constructor.*/
-	virtual PriorQueue();
+	PriorQueue();
 
 	/*! Destructor.*/
-	virtual ~PriorQueue();
+	~PriorQueue();
 
 	/*! Pushes item with priority to queue and puts it on right position.
 	* \param item Value to store.
@@ -40,6 +40,8 @@ public:
 	*/
 	virtual std::string print();
 };
+
+
 
 template<typename T>
 inline PriorQueue<T>::PriorQueue()
@@ -76,5 +78,3 @@ inline std::string PriorQueue<T>::print()
 
 
 #endif // !PRIOR_QUEUE_HPP
-
-

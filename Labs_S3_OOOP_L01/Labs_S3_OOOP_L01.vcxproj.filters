@@ -24,6 +24,12 @@
     <ClInclude Include="src\PriorQueue\Tree\TreeAVL.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\PriorQueue\List\NodeLinkedList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PriorQueue\List\LinkedList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

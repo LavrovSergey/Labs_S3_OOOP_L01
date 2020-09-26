@@ -5,6 +5,7 @@
 */
 
 #include "PriorQueue/PriorQueue.hpp"
+#include "PriorQueue/List/LinkedList.hpp"
 #include "PriorQueue/Tree/TreeAVL.hpp"
 
 #include <iostream>
@@ -15,12 +16,36 @@
 */
 int main()
 {
-	PriorQueue<int>* queue = new TreeAVL<int>();
-	queue->push(1, 1);
-	queue->push(2, 2);
-	queue->push(4, 4);
-	queue->push(3, 3);
-	queue->push(7, 7);
+	PriorQueue<int>* queue = new LinkedList<int>();
 	queue->push(5, 5);
 	std::cout << queue->print();
+
+	queue->push(3, 3);
+	std::cout << queue->print();
+
+	queue->push(4, 4);
+	std::cout << queue->print();
+
+	queue->push(6, 6);
+	std::cout << queue->print();
+
+	queue->push(3, 3);
+	std::cout << queue->print();
+
+	queue->push(7, 7);
+	std::cout << queue->print();
+
+	queue->push(2, 2);
+	std::cout << queue->print();
+
+	queue->push(3, 3);
+	std::cout << queue->print();
+
+	queue->push(8, 8);
+	std::cout << queue->print();
+	
+	for (int i = 0; i < 9; ++i)
+	{
+		std::cout << queue->pop() << std::endl;
+	}
 }

@@ -62,7 +62,7 @@ private:
 	*/
 	std::string printNode(const std::string& prefix, const NodeTreeAVL<T>* node, bool isLeft);
 public:
-	/*! Creates empty tree with NULL root. */
+	/*! Creates empty tree with nullptr root. */
 	TreeAVL();
 
 	/*! Prints whole tree to string.
@@ -90,7 +90,7 @@ public:
 
 	/*! Gets node height.
 	* \param node[int] Node with height.
-	* \returns 0 if node is NULL or it's height.
+	* \returns 0 if node is nullptr or it's height.
 	*/
 	int getNodeHeight(NodeTreeAVL<T>* node);
 
@@ -182,7 +182,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::deleteNode(NodeTreeAVL<T>* target, T value, i
 			if (!temp)
 			{
 				temp = target;
-				target = NULL;
+				target = nullptr;
 			}
 			else
 			{
@@ -249,7 +249,7 @@ template<typename T>
 inline NodeTreeAVL<T>* TreeAVL<T>::findLeftMost(NodeTreeAVL<T>* node)
 {
 	NodeTreeAVL<T>* current = node;
-	while (current->left != NULL)
+	while (current->left != nullptr)
 		current = current->left;
 	return current;
 }
@@ -275,8 +275,8 @@ inline std::string TreeAVL<T>::printNode(const std::string& prefix, const NodeTr
 		result += "[p: " + std::to_string(node->priority) + "  v: " + std::to_string(node->value) + "]\n";
 
 		//enter the next tree level - left and right branch
-		result += printNode(prefix + (isLeft ? "│   " : "    "), node->left, true);
-		result += printNode(prefix + (isLeft ? "│   " : "    "), node->right, false);
+		result += printNode(prefix + (isLeft ? "|   " : "    "), node->left, true);
+		result += printNode(prefix + (isLeft ? "|   " : "    "), node->right, false);
 	}
 	return result;
 }
@@ -307,6 +307,16 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, i
 {
 	if (!target)
 		return(new NodeTreeAVL<T>(value, priority));
+
+	/*if (target->priority > priority)
+	{
+		T tempV = target->value;
+		int tempP = target->priority;
+		target->value = value;
+		target->priority = priority;
+		value = tempV;
+		priority = tempP;
+	}*/
 
 	if (priority < target->priority)
 		target->left = insertNode(target->left, value, priority);
@@ -354,7 +364,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, i
 template<typename T>
 inline T TreeAVL<T>::pop()
 {
-	if (!root) return NULL;
+	if (!root) return nullptr;
 	auto value = root->value;
 	root = deleteNode(root, root->value, root->priority);
 	return value;
@@ -363,7 +373,7 @@ inline T TreeAVL<T>::pop()
 template<typename T>
 inline T TreeAVL<T>::predict()
 {
-	if (!root) return NULL;
+	if (!root) return nullptr;
 	else return root->value;
 }
 
