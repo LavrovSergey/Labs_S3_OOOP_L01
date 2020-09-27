@@ -26,6 +26,12 @@ class Heap : public PriorQueue<T>
 	*/
 	NodeHeap<T>* insertNode(NodeHeap<T>* target, T value, int priority);
 
+	/*! Recursive removes node from tree
+	* \param[in] target Where to delete.
+	* \returns New root of the subtree.
+	*/
+	NodeHeap<T>* removeNode(NodeHeap<T>* target);
+
 	/*! Recursive converts tree to text from given node.
 	* \param[in] prefix Offset for the level.
 	* \param[in] node Start of the tree.
@@ -141,6 +147,45 @@ inline NodeHeap<T>* Heap<T>::insertNode(NodeHeap<T>* target, T value, int priori
 }
 
 template<typename T>
+inline NodeHeap<T>* Heap<T>::removeNode(NodeHeap<T>* target)
+{
+	if (!target)
+		return target;
+
+	//if node has no children
+	if (!target->left &&
+		!target->right)
+	{
+		return target;
+	}
+
+	//if root has only one child
+	if (target->left &&
+		!target->right)
+	{
+		T value = target->value;
+		target = target->left;
+		return target;
+	}
+
+	if (!target->left &&
+		target->right)
+	{
+		T value = target->value;
+		target = target->right;
+		return target;
+	}
+
+	//root has both children
+	T t_value = target->value;
+	int t_priority = target->priority;
+	target->value = target->right->value;
+	target->priority = target->right->priority;
+	target->right->value = t_value;
+	target->right->priority = t_priority
+}
+
+template<typename T>
 inline std::string Heap<T>::printNode(const std::string& prefix, const NodeHeap<T>* node, bool isLeft)
 {
 	std::string result;
@@ -182,13 +227,17 @@ inline void Heap<T>::push(T value, unsigned int priority)
 template<typename T>
 inline T Heap<T>::pop()
 {
-	return T();
+	
+
 }
 
 template<typename T>
 inline T Heap<T>::predict()
 {
-	return T();
+	if (!root)
+		return T();
+	else
+		return root->value;
 }
 
 template<typename T>
