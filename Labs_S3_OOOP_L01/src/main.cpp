@@ -7,6 +7,7 @@
 #include "PriorQueue/PriorQueue.hpp"
 #include "PriorQueue/List/LinkedList.hpp"
 #include "PriorQueue/Tree/TreeAVL.hpp"
+#include "PriorQueue/Heap/Heap.hpp"
 
 #include <iostream>
 
@@ -16,7 +17,7 @@
 */
 int main()
 {
-	PriorQueue<int>* queue = new LinkedList<int>();
+	PriorQueue<int>* queue = new Heap<int>();
 	queue->push(5, 5);
 	std::cout << queue->print();
 

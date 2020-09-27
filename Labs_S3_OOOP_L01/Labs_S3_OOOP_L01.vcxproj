@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\PriorQueue\Heap\Heap.hpp" />
+    <ClInclude Include="src\PriorQueue\Heap\NodeHeap.hpp" />
     <ClInclude Include="src\PriorQueue\List\LinkedList.hpp" />
     <ClInclude Include="src\PriorQueue\List\NodeLinkedList.hpp" />
     <ClInclude Include="src\PriorQueue\PriorQueue.hpp" />
