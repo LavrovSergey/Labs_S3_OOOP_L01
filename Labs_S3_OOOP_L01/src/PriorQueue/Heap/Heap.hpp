@@ -18,34 +18,63 @@ class Heap : public PriorQueue<T>
 	/*! Array of elements.*/
 	std::vector<NodeHeap<T>> elements;
 
-public:
-	Heap();
+	/*! Makes a subheap with given root and given index.
+	* \param[in] index Index of the needed root.
+	*/
 	void makeHeap(int index);
 
+	/*! Calculates index of the parent node.
+	* \param[in] index Index of the current node.
+	* \returns Index of the parent node.
+	*/
+	int getParentIndex(int index);
 
-	int parent(int i) { return (i - 1) / 2; }
+	/*! Calculates index of left child node.
+	* \param[in] index Index of the current node.
+	* \returns Index of the child node.
+	*/
+	int getLeftChildIndex(int index);
 
-	// to get index of left child of node at index i 
-	int left(int i) { return (2 * i + 1); }
+	/*! Calculates index of right child node.
+	* \param[in] index Index of the current node.
+	* \returns Index of the child node.
+	*/
+	int getRightChildIndex(int index);
 
-	// to get index of right child of node at index i 
-	int right(int i) { return (2 * i + 2); }
+	/*! Extracts root.
+	* Extracts maximum priority value from queue.
+	* \returns Value with maximum priority.
+	*/
+	T extractRoot();
 
-	// to extract the root which is the minimum element 
-	T extractMin();
+	/*! Sets priority of element at index.
+	* Decreases value of priority at index to new priority.  
+	* It is assumed that new priority is smaller than old one.
+	* \param[in] index Index for decreasing.
+	* \param[in] newPriority New priority of the element.
+	*/
+	void decreaseKey(int index, int newPriority);
 
-	// Decreases key value of key at index i to new_val 
-	void decreaseKey(int i, T new_val);
+	/*! Returns highest priority.
+	* \returns the highest priority value (just priority, not value).
+	*/
+	int getFirst();
 
-	// Returns the minimum key (key at root) from min heap 
-	int getMin() { return elements[0].priority; }
+	/*! Deletes element on index
+	* \param index Index to delete.
+	*/
+	void deleteElement(int index);
 
-	// Deletes a key stored at index i 
-	void deleteKey(int i);
+	/*! Add new value
+	* \param value Value to insert.
+	* \param priority Priority of value.
+	*/
+	void insertNode(T value, int priority);
 
-	// Inserts a new key 'k' 
-	void insertKey(T value, int priority);
+public:
 
+	/*! Constructor*/
+	Heap();
 
 	/*! Pushes value with priority to heap.
 	* \param[in] value Value to insert.
@@ -73,6 +102,7 @@ public:
 
 #endif // !HEAP_HPP
 
+/*PRIVATE*/
 
 template<typename T>
 inline Heap<T>::Heap()
@@ -82,8 +112,8 @@ inline Heap<T>::Heap()
 template<typename T>
 inline void Heap<T>::makeHeap(int index)
 {
-	int l = left(index);
-	int r = right(index);
+	int l = getLeftChildIndex(index);
+	int r = getRightChildIndex(index);
 	int smallest = index;
 
 	if (l < elements.size() && 
@@ -102,7 +132,25 @@ inline void Heap<T>::makeHeap(int index)
 }
 
 template<typename T>
-inline T Heap<T>::extractMin()
+inline int Heap<T>::getParentIndex(int index)
+{
+	return (index - 1) / 2;
+}
+
+template<typename T>
+inline int Heap<T>::getLeftChildIndex(int index)
+{
+	return (2 * index + 1);
+}
+
+template<typename T>
+inline int Heap<T>::getRightChildIndex(int index)
+{
+	return (2 * index + 2);
+}
+
+template<typename T>
+inline T Heap<T>::extractRoot()
 {
 	if (elements.size() <= 0)
 	{
@@ -127,27 +175,33 @@ inline T Heap<T>::extractMin()
 }
 
 template<typename T>
-inline void Heap<T>::decreaseKey(int index, T new_val)
+inline void Heap<T>::decreaseKey(int index, int new_priority)
 {
-	elements[index] = new_val;
+	elements[index].priority = new_priority;
 	while (
 		index != 0 && 
-		elements[parent(index)] > elements[index])
+		elements[getParentIndex(index)].priority > elements[index].priority)
 	{
-		std::swap(elements[index], elements[parent(index)]);
-		index = parent(index);
+		std::swap(elements[index], elements[getParentIndex(index)]);
+		index = getParentIndex(index);
 	}
 }
 
 template<typename T>
-inline void Heap<T>::deleteKey(int i)
+inline int Heap<T>::getFirst()
 {
-	decreaseKey(i, INT_MIN);
-	extractMin();
+	return elements[0].priority;
 }
 
 template<typename T>
-inline void Heap<T>::insertKey(T value, int priority)
+inline void Heap<T>::deleteElement(int i)
+{
+	decreaseKey(i, INT_MIN);
+	extractRoot();
+}
+
+template<typename T>
+inline void Heap<T>::insertNode(T value, int priority)
 {
 	// First insert the new key at the end 
 	elements.push_back(NodeHeap<T>(value, priority));
@@ -156,10 +210,10 @@ inline void Heap<T>::insertKey(T value, int priority)
 	int index = elements.size() - 1;
 	while (
 		index != 0 &&
-		elements[parent(index)].priority > elements[index].priority)
+		elements[getParentIndex(index)].priority > elements[index].priority)
 	{
-		std::swap(elements[index], elements[parent(index)]);
-		index = parent(index);
+		std::swap(elements[index], elements[getParentIndex(index)]);
+		index = getParentIndex(index);
 	}
 }
 
@@ -168,19 +222,19 @@ inline void Heap<T>::insertKey(T value, int priority)
 template<typename T>
 inline void Heap<T>::push(T value, unsigned int priority)
 {
-	insertKey(value, priority);
+	insertNode(value, priority);
 }
 
 template<typename T>
 inline T Heap<T>::pop()
 {
-	return extractMin();
+	return extractRoot();
 }
 
 template<typename T>
 inline T Heap<T>::predict()
 {
-	return getMin();
+	return getFirst();
 }
 
 template<typename T>
