@@ -11,12 +11,6 @@ template<typename T>
 class NodeHeap
 {
 public:
-	/*! Left child*/
-	NodeHeap<T>* left;
-
-	/*! Right child*/
-	NodeHeap<T>* right;
-
 	/*! Value*/
 	T value;
 
@@ -29,16 +23,24 @@ public:
 	* \param[in] priority Priority of value.
 	*/
 	NodeHeap(T value, int priority);
+
+	NodeHeap();
+
 };
 
 
 template<typename T>
 inline NodeHeap<T>::NodeHeap(T value, int priority)
 {
-	this->left = nullptr;
-	this->right = nullptr;
 	this->value = value;
 	this->priority = priority;
+}
+
+template<typename T>
+inline NodeHeap<T>::NodeHeap()
+{
+	this->value = T();
+	this->priority = 0;
 }
 
 #endif // !NODE_HEAP_HPP
