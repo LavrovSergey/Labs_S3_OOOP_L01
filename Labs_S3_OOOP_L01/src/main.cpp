@@ -9,6 +9,8 @@
 #include "PriorQueue/Tree/TreeAVL.hpp"
 #include "PriorQueue/Heap/Heap.hpp"
 
+#include "FileSystem/FileSystem.hpp"
+
 #include <iostream>
 
 //! main function
@@ -17,6 +19,14 @@
 */
 int main()
 {
+
+	FileSystem fileSystem;
+
+	auto newFile = fileSystem.createFile("root\\games\\factorio.exe", 0, 0, FileType::file);
+	auto path = newFile->getFullPath();
+	std::cout << path << std::endl;
+
+
 	PriorQueue<int>* queue = new Heap<int>();
 	queue->push(5, 5);
 	std::cout << queue->print();

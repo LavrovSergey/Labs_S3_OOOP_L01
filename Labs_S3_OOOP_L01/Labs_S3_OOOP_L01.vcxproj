@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Helper\Helper.hpp" />
+    <ClInclude Include="src\FileSystem\FileSystem.hpp" />
     <ClInclude Include="src\FileSystem\FileInfo.hpp" />
     <ClInclude Include="src\FileSystem\FileType.hpp" />
     <ClInclude Include="src\PriorQueue\Heap\Heap.hpp" />
@@ -148,9 +150,13 @@
     <ClInclude Include="src\PriorQueue\PriorQueue.hpp" />
     <ClInclude Include="src\PriorQueue\Tree\TreeAVL.hpp" />
     <ClInclude Include="src\PriorQueue\Tree\NodeTreeAVL.hpp" />
+    <ClInclude Include="..\Easy_CPP_DateTime\EasyDateTime.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Helper\Helper.cpp" />
     <ClCompile Include="src\FileSystem\FileSystem.cpp" />
+    <ClCompile Include="src\FileSystem\FileInfo.cpp" />
+    <ClCompile Include="..\Easy_CPP_DateTime\EasyDateTime.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
