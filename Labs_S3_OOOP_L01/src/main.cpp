@@ -20,16 +20,18 @@
 int main()
 {
 
-	FileSystem fileSystem("D:\\Images");
+	FileSystem fileSystem("D:\\Doxygen_res_01");
 	std::cout << fileSystem.print() << std::endl;
+
+	auto res = fileSystem.searchByName(fileSystem.root, "node");
+	for (auto& i : res)
+		std::cout << i->getFullPath() << std::endl;
 
 	/*fileSystem.createFile("user\\games\\factorio.exe", 0, 0, FileType::file);
 	fileSystem.createFile("user\\facts\\docs.doc", 0, 0, FileType::file);
 	fileSystem.createFile("user\\music\\Era Falsity.mp3", 0, 0, FileType::file);
 
-	auto res = fileSystem.searchByName(fileSystem.root, "a");
-	for (auto& i : res)
-		std::cout << i->getFullPath() << std::endl;
+	
 
 	std::cout << std::endl;
 

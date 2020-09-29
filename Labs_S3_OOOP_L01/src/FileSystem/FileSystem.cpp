@@ -7,9 +7,25 @@ std::string FileSystem::printNode(const std::string& prefix, const FileInfo* nod
     {
         result = prefix;
 
+        std::string type;
+
+        switch (node->fileType)
+        {
+            case FileType::file :       break;
+            case FileType::directory:       type = "<DIR>"; break;
+            case FileType::link :           type = "<LNK>"; break;
+            case FileType::fifo :           type = "<FIF>"; break;
+            case FileType::block :          type = "<BLK>"; break;
+            case FileType::character :      type = "<CHR>"; break;
+            case FileType::soket :          type = "<SOC>"; break;
+            default: break;
+        }
+
         const unsigned char opened = 195;
         const unsigned char closed = 192;
         const unsigned char line = 196;
+
+
 
         //give direction
         result += (isLast ? closed : opened);
@@ -17,20 +33,9 @@ std::string FileSystem::printNode(const std::string& prefix, const FileInfo* nod
         result += line;
 
         //add node value
-        result += node->name + "\n";
-        //std::cout << result;
+        result += type + node->name + "\n";
         for (auto& i : node->children)
             result += printNode(prefix + (isLast ? "    " : "|   "), i, i == node->children.back());
-        //enter the next tree level - left and right branch
-        //for (auto i = root->children.begin(); i != root->children.end(); ++i)
-        //if (node->children.size() > 0)
-        //{
-            //for (int i = 0; i < node->children.size() - 2; ++i)
-                //result += printNode(prefix + (isLast ? "|   " : "    "), (*i), false);
-
-            //result += printNode(prefix + (isLast ? "|   " : "    "), node->children.back(), true);
-        //}
-       
     }
     return result;
 }
@@ -43,11 +48,15 @@ FileSystem::FileSystem()
 FileSystem::FileSystem(std::string realPath)
 {
     root = new FileInfo("root", 0, 0, FileType::directory);
-    for (const auto& entry : fs::directory_iterator(realPath))
+    for (const auto& entry : fs::recursive_directory_iterator(realPath))
     {
         std::stringstream spath;
         spath << entry.path();
         std::string path = spath.str();
+
+        //std::cout << path << std::endl;
+
+
 
         createFile(path, 0, entry.file_size(),
             entry.is_regular_file() ? FileType::file :
@@ -57,8 +66,9 @@ FileSystem::FileSystem(std::string realPath)
             entry.is_block_file() ? FileType::block :
             entry.is_character_file() ? FileType::character :
             entry.is_socket() ? FileType::soket :
-            FileType::directory);
+            FileType::file);
 
+        
     }
 }
 
@@ -84,19 +94,23 @@ FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, ui
     //split path on subdirs
     auto subdirs = Helper::splitString(path, "\\");
     auto subdir = root;
+    for (int i = 0; i < subdirs.size(); ++i)
+    {
+        subdirs[i].erase(std::remove(subdirs[i].begin(), subdirs[i].end(), '\\'), subdirs[i].end());
+        subdirs[i].erase(std::remove(subdirs[i].begin(), subdirs[i].end(), '\"'), subdirs[i].end());
+    }
+
     for (auto& i : subdirs)
     {
         if (i == "")
             continue;
-        std::string subPath = i;
-        subPath.erase(std::remove(subPath.begin(), subPath.end(), '\\'), subPath.end());
-        subPath.erase(std::remove(subPath.begin(), subPath.end(), '\"'), subPath.end());
+        
         //for every subdir check it existance
         bool hasChild = false;
         for (auto& j : subdir->children)
         {
             //go level down if exist
-            if (j->name == subPath &&
+            if (j->name == i &&
                 j->fileType == FileType::directory)
             {
                 subdir = j;
@@ -108,9 +122,9 @@ FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, ui
         if (!hasChild)
         {
             //if it's last subdir - it is file, apply parameters
-            auto newDir = subdirs.back() != subPath ?
-                new FileInfo(subPath, DateTime(0), 0, FileType::directory) :
-                new FileInfo(subPath, dateTimeCreation, length, fileType);
+            auto newDir = subdirs.back() != i ?
+                new FileInfo(i, DateTime(0), 0, FileType::directory) :
+                new FileInfo(i, dateTimeCreation, length, fileType);
             subdir->createFile(newDir);
             subdir = newDir;
         }
