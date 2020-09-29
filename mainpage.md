@@ -1,4 +1,5 @@
-[Документація Doxygen](https://rasakhatskiy.github.io/Labs_S3_OOOP_L01)
+@mainpage Лабораторна робота 1
+@author Максим Расахацький, К-29
 
 ### Завдання   
 
