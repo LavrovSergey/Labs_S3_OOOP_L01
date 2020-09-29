@@ -64,6 +64,8 @@ public:
 	* \exception std::invalid_argument Thrown if file type is not directory
 	*/
 	void createFile(FileInfo* file);
+
+	
 };
 
 #endif // !FILE_INFO_HPP

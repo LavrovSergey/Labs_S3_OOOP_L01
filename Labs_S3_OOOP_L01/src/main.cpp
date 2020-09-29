@@ -20,9 +20,10 @@
 int main()
 {
 
-	FileSystem fileSystem;
+	FileSystem fileSystem("D:\\Images");
+	std::cout << fileSystem.print() << std::endl;
 
-	fileSystem.createFile("user\\games\\factorio.exe", 0, 0, FileType::file);
+	/*fileSystem.createFile("user\\games\\factorio.exe", 0, 0, FileType::file);
 	fileSystem.createFile("user\\facts\\docs.doc", 0, 0, FileType::file);
 	fileSystem.createFile("user\\music\\Era Falsity.mp3", 0, 0, FileType::file);
 
@@ -34,7 +35,7 @@ int main()
 
 	res = fileSystem.searchByName(fileSystem.root, "o");
 	for (auto& i : res)
-		std::cout << i->getFullPath() << std::endl;
+		std::cout << i->getFullPath() << std::endl;*/
 
 	PriorQueue<int>* queue = new Heap<int>();
 	queue->push(5, 5);
