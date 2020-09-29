@@ -13,7 +13,7 @@ FileInfo::FileInfo(std::string name, DateTime dateTimeCreation, uint64_t length,
 std::string FileInfo::getFullPath()
 {
     if (!parent)
-        return std::string();
+        return name;
     else
         return parent->getFullPath() + "\\" + name;
 }

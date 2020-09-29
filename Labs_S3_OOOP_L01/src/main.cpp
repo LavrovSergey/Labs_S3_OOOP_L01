@@ -22,10 +22,19 @@ int main()
 
 	FileSystem fileSystem;
 
-	auto newFile = fileSystem.createFile("root\\games\\factorio.exe", 0, 0, FileType::file);
-	auto path = newFile->getFullPath();
-	std::cout << path << std::endl;
+	fileSystem.createFile("user\\games\\factorio.exe", 0, 0, FileType::file);
+	fileSystem.createFile("user\\facts\\docs.doc", 0, 0, FileType::file);
+	fileSystem.createFile("user\\music\\Era Falsity.mp3", 0, 0, FileType::file);
 
+	auto res = fileSystem.searchByName(fileSystem.root, "a");
+	for (auto& i : res)
+		std::cout << i->getFullPath() << std::endl;
+
+	std::cout << std::endl;
+
+	res = fileSystem.searchByName(fileSystem.root, "o");
+	for (auto& i : res)
+		std::cout << i->getFullPath() << std::endl;
 
 	PriorQueue<int>* queue = new Heap<int>();
 	queue->push(5, 5);

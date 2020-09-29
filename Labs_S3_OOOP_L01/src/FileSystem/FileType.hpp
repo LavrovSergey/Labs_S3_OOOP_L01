@@ -8,7 +8,7 @@
 #define FILE_TYPE_HPP
 
 /*! File type enum */
-enum FileType
+enum class FileType
 {
 	/*! Regular file.*/
 	file,

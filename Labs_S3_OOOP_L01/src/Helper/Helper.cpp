@@ -11,5 +11,6 @@ std::vector<std::string> Helper::splitString(std::string input, std::string deli
         result.push_back(token);
         input.erase(0, pos + delimiter.length());
     }
+    result.push_back(input);
     return result;
 }
