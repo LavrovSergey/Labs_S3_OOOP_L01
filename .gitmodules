@@ -1,3 +1,6 @@
 [submodule "Easy_CPP_DateTime"]
 	path = Easy_CPP_DateTime
 	url = https://github.com/Rasakhatskiy/Easy_CPP_DateTime
+[submodule "FlawlessMenu"]
+	path = FlawlessMenu
+	url = https://github.com/Rasakhatskiy/FlawlessMenu
