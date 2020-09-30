@@ -51,6 +51,12 @@
     <ClInclude Include="src\PriorQueue\NodePriority.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\FlawlessMenu\FlawlessMenu\lib\FlawlessMenu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interaction.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -66,6 +72,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Easy_CPP_DateTime\EasyDateTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FlawlessMenu\FlawlessMenu\lib\FlawlessMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Interaction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

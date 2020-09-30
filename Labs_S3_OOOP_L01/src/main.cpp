@@ -3,6 +3,10 @@
 * \author Maksym Rasakhatskyi
 * \version 1.0 24/09/20
 */
+#include <iostream>
+
+// _getch
+#include <conio.h>
 
 #include "PriorQueue/PriorQueue.hpp"
 #include "PriorQueue/List/LinkedList.hpp"
@@ -11,7 +15,11 @@
 
 #include "FileSystem/FileSystem.hpp"
 
-#include <iostream>
+#include "../../FlawlessMenu/FlawlessMenu/lib/FlawlessMenu.hpp"
+
+#include "Interaction.hpp"
+
+using namespace FlawlessMenu;
 
 //! main function
 /*!
@@ -19,59 +27,52 @@
 */
 int main()
 {
+	
+	//Setup static variables first
+	Menu::Selector = ">";
+	Menu::Filler = "==========";
+	Menu::GetKeyFunc = _getch;
 
-	FileSystem fileSystem("D:\\Doxygen_res_01");
-	fileSystem.createFile("D:\\Doxygen_res_01\\_symlink\\wow\\new\\file.exe", 0, 0, FileType::file);
-
-	std::cout << fileSystem.print() << std::endl;
+	auto root = new Menu("Main menu");
 
 
-	/*auto res = fileSystem.searchByName(fileSystem.root, "node");
-	for (auto& i : res)
-		std::cout << i->getFullPath() << std::endl;*/
+	auto menuQueue = new Menu("Work with queue");
 
-	/*fileSystem.createFile("user\\games\\factorio.exe", 0, 0, FileType::file);
-	fileSystem.createFile("user\\facts\\docs.doc", 0, 0, FileType::file);
-	fileSystem.createFile("user\\music\\Era Falsity.mp3", 0, 0, FileType::file);
+	auto menuQueueInt = new Menu("Integer queue");
+	menuQueueInt->Add("Create list", function_createList_int);
+	menuQueueInt->Add("Create heap", function_createHeap_int);
+	menuQueueInt->Add("Create tree", function_createTree_int);
+	menuQueueInt->Add("Add element", function_push);
+	menuQueueInt->Add("Get element", function_pop);
+	menuQueueInt->Add("Predict element", function_predict);
+	menuQueueInt->Add("Print queue", function_print);
+	menuQueue->Add("Integer queue", menuQueueInt);
 
+
+	auto menuQueueFile = new Menu("File system queue");
+	menuQueueFile->Add("Create list", function_createList_file);
+	menuQueueFile->Add("Create heap", function_createHeap_file);
+	menuQueueFile->Add("Create tree", function_createTree_file);
+	menuQueueFile->Add("Add element", function_push);
+	menuQueueFile->Add("Get element", function_pop);
+	menuQueueFile->Add("Predict element", function_predict);
+	menuQueueFile->Add("Print queue", function_print);
+	menuQueue->Add("File system queue", menuQueueFile);
+
+
+	root->Add("Work with queue", menuQueue);
+
+
+
+	auto menuFileSystem = new Menu("Work with file system");
 	
 
-	std::cout << std::endl;
+	root->Add("Work with file system", menuFileSystem);
 
-	res = fileSystem.searchByName(fileSystem.root, "o");
-	for (auto& i : res)
-		std::cout << i->getFullPath() << std::endl;*/
+	root->Start();
 
-	/*PriorQueue<int>* queue = new Heap<int>();
-	queue->push(5, 5);
-	std::cout << queue->print();
+	//FileSystem fileSystem("D:\\Doxygen_res_01");
+	//fileSystem.createFile("D:\\Doxygen_res_01\\_symlink\\wow\\new\\file.exe", 0, 0, FileType::file);
 
-	queue->push(3, 3);
-	std::cout << queue->print();
-
-	queue->push(4, 4);
-	std::cout << queue->print();
-
-	queue->push(6, 6);
-	std::cout << queue->print();
-
-	queue->push(3, 3);
-	std::cout << queue->print();
-
-	queue->push(7, 7);
-	std::cout << queue->print();
-
-	queue->push(2, 2);
-	std::cout << queue->print();
-
-	queue->push(3, 3);
-	std::cout << queue->print();
-
-	queue->push(8, 8);
-	std::cout << queue->print();
-	
-	for (int i = 0; i < 9; ++i)
-	{
-		std::cout << queue->pop() << std::endl;
-	}*/
+	//std::cout << fileSystem.print() << std::endl;
 }
