@@ -46,13 +46,17 @@ public:
 	/*! File type: file, dir, etc...*/
 	FileType fileType;
 
+	/*! Symlink adress*/
+	std::string symlinkTarget;
 
 	/*! Constructor
-	* Creates ne file info.
-	* Assigns parent to nullptr
-	* Assigns date of modification date of creation
+	* \param[in] name Short file name.
+	* \param[in] dateTimeCreation Date and time of file creation.
+	* \param[in] length File size in bytes.
+	* \param[in] fileType File type: file, dir, symlink, etc...
+	* \param[in] symlinkTarget Target path of the symlink.
 	*/
-	FileInfo(std::string name, DateTime dateTimeCreation, uint64_t length, FileType fileType);
+	FileInfo(std::string name, DateTime dateTimeCreation, uint64_t length, FileType fileType, std::string symlinkTarget = "");
 
 	/*! Recursive reads full path of file from root.
 	* \returns Full path in string format.
@@ -60,7 +64,7 @@ public:
 	std::string getFullPath();
 
 	/*! Creates file in current dir if it is dir.
-	* \param file New file to add.
+	* \param file[in] New file to add.
 	* \exception std::invalid_argument Thrown if file type is not directory
 	*/
 	void createFile(FileInfo* file);

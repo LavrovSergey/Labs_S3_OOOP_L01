@@ -1,6 +1,11 @@
 #include "FileInfo.hpp"
 
-FileInfo::FileInfo(std::string name, DateTime dateTimeCreation, uint64_t length, FileType fileType)
+FileInfo::FileInfo(
+    std::string name, 
+    DateTime dateTimeCreation, 
+    uint64_t length, 
+    FileType fileType, 
+    std::string symlinkTarget)
 {
     this->parent = nullptr;
     this->name = name;
@@ -8,6 +13,7 @@ FileInfo::FileInfo(std::string name, DateTime dateTimeCreation, uint64_t length,
     this->dateTimeModification = dateTimeCreation;
     this->length = length;
     this->fileType = fileType;
+    this->symlinkTarget = symlinkTarget;
 }
 
 std::string FileInfo::getFullPath()

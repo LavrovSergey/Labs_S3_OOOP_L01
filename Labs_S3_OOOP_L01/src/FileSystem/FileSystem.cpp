@@ -45,6 +45,20 @@ FileSystem::FileSystem()
     root = new FileInfo("root", 0, 0, FileType::directory);
 }
 
+void demo_status(const fs::path& p, fs::file_status s)
+{
+    std::cout << p;
+    // alternative: switch(s.type()) { case fs::file_type::regular: ...}
+    if (fs::is_regular_file(s)) std::cout << " is a regular file\n";
+    if (fs::is_directory(s)) std::cout << " is a directory\n";
+    if (fs::is_block_file(s)) std::cout << " is a block device\n";
+    if (fs::is_character_file(s)) std::cout << " is a character device\n";
+    if (fs::is_fifo(s)) std::cout << " is a named IPC pipe\n";
+    if (fs::is_socket(s)) std::cout << " is a named IPC socket\n";
+    if (fs::is_symlink(s)) std::cout << " is a symlink\n";
+    if (!fs::exists(s)) std::cout << " does not exist\n";
+}
+
 FileSystem::FileSystem(std::string realPath)
 {
     root = new FileInfo("root", 0, 0, FileType::directory);
@@ -53,20 +67,18 @@ FileSystem::FileSystem(std::string realPath)
         std::stringstream spath;
         spath << entry.path();
         std::string path = spath.str();
+        auto status = entry.status();
+        FileType type = FileType::file;
 
-        //std::cout << path << std::endl;
+        if (fs::is_regular_file(status))            type = FileType::file;
+        if (fs::is_directory(status))               type = FileType::directory;
+        if (fs::is_block_file(status))              type = FileType::block;
+        if (fs::is_character_file(status))          type = FileType::character;
+        if (fs::is_fifo(status))                    type = FileType::fifo;
+        if (fs::is_socket(status))                  type = FileType::soket;
+        if (fs::is_symlink(entry.symlink_status())) type = FileType::link;
 
-
-
-        createFile(path, 0, entry.file_size(),
-            entry.is_regular_file() ? FileType::file :
-            entry.is_directory() ? FileType::directory :
-            entry.is_symlink() ? FileType::link :
-            entry.is_fifo() ? FileType::fifo :
-            entry.is_block_file() ? FileType::block :
-            entry.is_character_file() ? FileType::character :
-            entry.is_socket() ? FileType::soket :
-            FileType::file);
+        createFile(path, 0, entry.file_size(), type);
 
         
     }
@@ -117,6 +129,18 @@ FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, ui
                 hasChild = true;
                 break;
             }
+
+            /*if (j->name == i &&
+                j->fileType == FileType::link)
+            {
+                std::string pathLink;
+                for (auto &k : subdirs)
+                    if(k - subdirs.begin())
+                    pathLink += subdirs[k];
+                pathLink = j->symlinkTarget + "\\" + pathLink;
+
+                return;
+            }*/
         }
         //create subdir if not exist
         if (!hasChild)
