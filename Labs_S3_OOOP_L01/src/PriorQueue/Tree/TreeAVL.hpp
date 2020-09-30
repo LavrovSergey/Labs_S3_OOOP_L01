@@ -17,7 +17,7 @@ template <typename T>
 class TreeAVL : public PriorQueue<T>
 {
 private:
-	//! Root of the tree, first element in queue
+	/*! Root of the tree, first element in queue*/
 	NodeTreeAVL<T>* root;
 
 	/*! Right rotates subtree rooted with given node.

@@ -30,9 +30,6 @@
     <ClInclude Include="src\PriorQueue\List\LinkedList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\PriorQueue\Heap\NodeHeap.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\PriorQueue\Heap\Heap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Easy_CPP_DateTime\EasyDateTime.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PriorQueue\NodePriority.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

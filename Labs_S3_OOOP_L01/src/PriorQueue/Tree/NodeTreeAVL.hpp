@@ -7,24 +7,19 @@
 #ifndef NODE_TREE_AVL_HPP
 #define NODE_TREE_AVL_HPP
 
-template <typename T>
-class NodeTreeAVL
-{
+#include "../NodePriority.hpp"
 
+template <typename T>
+class NodeTreeAVL : public NodePriority<T>
+{
 public:
-	//! Left child.
+	/*! Left child.*/
 	NodeTreeAVL<T>* left;
 
-	//! Right child.
+	/*! Right child.*/
 	NodeTreeAVL<T>* right;
 
-	//! Value that our queue contains.
-	T value;
-
-	//! Priority of this value.
-	int priority;
-
-	//! Height of the current node
+	/*! Height of the current node*/
 	unsigned int height;
 
 	/*! Constructor
@@ -34,39 +29,14 @@ public:
 	* Assigns height as 1
 	*/
 	NodeTreeAVL(T value, int priority);
-
-	/*! Gets node value.
-	* \returns Node value.
-	*/
-	T getValue();
-
-	/*! Gets priority for value in current node.
-	* \returns Priority for value in current node.
-	*/
-	unsigned int getPriority();
-
 };
 
 template<typename T>
-inline NodeTreeAVL<T>::NodeTreeAVL(T value, int priority)
+inline NodeTreeAVL<T>::NodeTreeAVL(T value, int priority) : NodePriority<T>(value, priority)
 {
-	this->value = value;
-	this->priority = priority;
 	this->left = nullptr;
 	this->right = nullptr;
 	this->height = 1;
-}
-
-template<typename T>
-inline T NodeTreeAVL<T>::getValue()
-{
-	return value;
-}
-
-template<typename T>
-inline unsigned int NodeTreeAVL<T>::getPriority()
-{
-	return priority;
 }
 
 #endif // !NODE_TREE_AVL_HPP

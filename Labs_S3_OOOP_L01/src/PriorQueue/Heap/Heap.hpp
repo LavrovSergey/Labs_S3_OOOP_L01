@@ -8,7 +8,7 @@
 #define HEAP_HPP
 
 #include "../PriorQueue.hpp"
-#include "NodeHeap.hpp"
+#include "../NodePriority.hpp"
 
 #include <vector>
 
@@ -16,7 +16,7 @@ template<typename T>
 class Heap : public PriorQueue<T>
 {
 	/*! Array of elements.*/
-	std::vector<NodeHeap<T>> elements;
+	std::vector<NodePriority<T>> elements;
 
 	/*! Makes a subheap with given root and given index.
 	* \param[in] index Index of the needed root.
@@ -159,7 +159,7 @@ inline T Heap<T>::extractRoot()
 	else
 	if (elements.size() == 1)
 	{
-		NodeHeap<T> node = elements.back();
+		NodePriority<T> node = elements.back();
 		elements.pop_back();
 		return node.value;
 	}
@@ -204,7 +204,7 @@ template<typename T>
 inline void Heap<T>::insertNode(T value, int priority)
 {
 	// First insert the new key at the end 
-	elements.push_back(NodeHeap<T>(value, priority));
+	elements.push_back(NodePriority<T>(value, priority));
 
 	// Fix the heap property if it is violated
 	int index = elements.size() - 1;

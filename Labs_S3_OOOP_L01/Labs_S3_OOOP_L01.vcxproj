@@ -146,9 +146,9 @@
     <ClInclude Include="src\FileSystem\FileInfo.hpp" />
     <ClInclude Include="src\FileSystem\FileType.hpp" />
     <ClInclude Include="src\PriorQueue\Heap\Heap.hpp" />
-    <ClInclude Include="src\PriorQueue\Heap\NodeHeap.hpp" />
     <ClInclude Include="src\PriorQueue\List\LinkedList.hpp" />
     <ClInclude Include="src\PriorQueue\List\NodeLinkedList.hpp" />
+    <ClInclude Include="src\PriorQueue\NodePriority.hpp" />
     <ClInclude Include="src\PriorQueue\PriorQueue.hpp" />
     <ClInclude Include="src\PriorQueue\Tree\TreeAVL.hpp" />
     <ClInclude Include="src\PriorQueue\Tree\NodeTreeAVL.hpp" />

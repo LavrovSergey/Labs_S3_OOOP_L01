@@ -1,4 +1,4 @@
-[Документація Doxygen](https://rasakhatskiy.github.io/Labs_S3_OOOP_L01)
+[Документація Doxygen](https://rasakhatskiy.github.io/Labs_S3_OOOP_L01/index.html)
 
 ### Завдання   
 

@@ -7,17 +7,13 @@
 #ifndef NODE_LINKED_LIST_HPP
 #define NODE_LINKED_LIST_HPP
 
+#include "../NodePriority.hpp"
+
 template <typename T>
-class NodeLinkedList
+class NodeLinkedList : public NodePriority<T>
 {
 public:
-	//! Value that our queue contains.
-	T value;
-
-	//! Priority of this value.
-	int priority;
-
-	//! Next element in list
+	/*! Next element in list.*/
 	NodeLinkedList<T>* next;
 
 	/*! Constructor
@@ -25,14 +21,12 @@ public:
 	* \param[in] priority Priority for value.
 	* Assigns next as null
 	*/
-	NodeLinkedList(T value, int priority);
+	NodeLinkedList(T value, int priority);// : NodePriority<T>::NodePriority(value, priority);
 };
 
 template<typename T>
-NodeLinkedList<T>::NodeLinkedList(T value, int priority)
+NodeLinkedList<T>::NodeLinkedList(T value, int priority) : NodePriority<T>(value, priority)
 {
-	this->value = value;
-	this->priority = priority;
 	this->next = nullptr;
 }
 
