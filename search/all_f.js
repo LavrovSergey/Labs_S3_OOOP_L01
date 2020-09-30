@@ -1,4 +1,12 @@
 var searchData=
 [
-  ['value_73',['value',['../class_node_heap.html#a47b34cf7c6a004fcf1e04bc9a1958854',1,'NodeHeap::value()'],['../class_node_linked_list.html#a3c2445135fb536c93b1d20cdc88af351',1,'NodeLinkedList::value()'],['../class_node_tree_a_v_l.html#aff940d70838ecd0d1b144d751f534768',1,'NodeTreeAVL::value()']]]
+  ['searchbyname_94',['searchByName',['../class_file_system.html#a9714920b2ffeb7918a1f34fa1dfc59de',1,'FileSystem']]],
+  ['seconds_95',['Seconds',['../class_date_time.html#a9591b3bf24e88c3693893e9915d6ce42',1,'DateTime']]],
+  ['select_96',['Select',['../class_flawless_menu_1_1_menu.html#a934541f227b50ae55444fed3ec99595bae0626222614bdee31951d84c64e5e9ff',1,'FlawlessMenu::Menu']]],
+  ['selector_97',['Selector',['../class_flawless_menu_1_1_menu.html#a073efa02b5b86da4af0e10d277c08878',1,'FlawlessMenu::Menu']]],
+  ['settime_98',['SetTime',['../class_date_time.html#a357925b49eca9cc738b98f9d74bfb445',1,'DateTime']]],
+  ['soket_99',['soket',['../_file_type_8hpp.html#a2c794c5c13ab4dd7e65bad031dbe41c3ab0c264b533aa02d6b34bcaf0cddce1f8',1,'FileType.hpp']]],
+  ['splitstring_100',['splitString',['../class_helper.html#a72ecf244785351a3c3e53372c2fe55aa',1,'Helper']]],
+  ['start_101',['Start',['../class_flawless_menu_1_1_menu.html#a5852224aadf50021a964bc4a9f34747e',1,'FlawlessMenu::Menu']]],
+  ['submenu_102',['Submenu',['../class_flawless_menu_1_1_menu.html#a6d39b475c860cef4d54d555d3cdf0f5ca3b0b126cd07e1c1f2677690f080ee723',1,'FlawlessMenu::Menu']]]
 ];

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['right_64',['right',['../class_node_tree_a_v_l.html#a2dfb2c03982a74b3b051e49099bec902',1,'NodeTreeAVL']]],
-  ['root_65',['root',['../class_file_system.html#a283a11b858b6b58140c0ad86248044a4',1,'FileSystem::root()'],['../class_tree_a_v_l.html#ac0b5db13387fb0ec3bedd2b4c94a240a',1,'TreeAVL::root()']]],
-  ['rotateleft_66',['rotateLeft',['../class_tree_a_v_l.html#afca99c9286e3c77dcc6a9e996c159ce4',1,'TreeAVL']]],
-  ['rotateright_67',['rotateRight',['../class_tree_a_v_l.html#a3c5fb952cb9ab82d03e7f70a4cc8652c',1,'TreeAVL']]]
+  ['operator_3c_77',['operator&lt;',['../class_date_time.html#a75300685c2369d55dc6a622d46cd0a77',1,'DateTime']]],
+  ['operator_3d_3d_78',['operator==',['../class_date_time.html#a0597551de83eee9f5a1b53b788c275f1',1,'DateTime']]],
+  ['operator_3e_79',['operator&gt;',['../class_date_time.html#a74447e10c65804284ebeaa6701a87b8d',1,'DateTime']]]
 ];

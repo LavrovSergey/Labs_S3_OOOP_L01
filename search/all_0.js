@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['block_0',['block',['../_file_type_8hpp.html#a2c794c5c13ab4dd7e65bad031dbe41c3a14511f2f5564650d129ca7cabc333278',1,'FileType.hpp']]]
+  ['add_0',['Add',['../class_flawless_menu_1_1_menu.html#a0c3088fb337dd9706e1ca87b50bb30a7',1,'FlawlessMenu::Menu::Add(std::string item, Menu *menu)'],['../class_flawless_menu_1_1_menu.html#a77c400c1056dc45ce8f9b22c7368afd8',1,'FlawlessMenu::Menu::Add(std::string item, void(*f)(void))']]]
 ];

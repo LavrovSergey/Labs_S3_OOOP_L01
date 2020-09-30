@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['decreasekey_99',['decreaseKey',['../class_heap.html#aa41b450fbfba04686a60e5c4ef8e8a4f',1,'Heap']]],
-  ['deleteelement_100',['deleteElement',['../class_heap.html#a90cb91c1136540828134624152c473d0',1,'Heap']]],
-  ['deletenode_101',['deleteNode',['../class_tree_a_v_l.html#ac4fe9cf03d62ec4e292c9d8b41e22cf9',1,'TreeAVL']]]
+  ['createfile_143',['createFile',['../class_file_info.html#a0a7399a6e2b53ac06ff0d46c2a6616f8',1,'FileInfo::createFile()'],['../class_file_system.html#ac19858833e4fb470aa5fb5e8905ecef5',1,'FileSystem::createFile()']]]
 ];

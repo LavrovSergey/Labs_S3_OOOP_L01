@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['treeavl_85',['TreeAVL',['../class_tree_a_v_l.html',1,'']]]
+  ['priorqueue_125',['PriorQueue',['../class_prior_queue.html',1,'']]]
 ];

@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['treeavl_71',['TreeAVL',['../class_tree_a_v_l.html',1,'TreeAVL&lt; T &gt;'],['../class_tree_a_v_l.html#a43c4c69a41c5dc84010d2a265def4120',1,'TreeAVL::TreeAVL()']]],
-  ['treeavl_2ehpp_72',['TreeAVL.hpp',['../_tree_a_v_l_8hpp.html',1,'']]]
+  ['readme_89',['README',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['right_90',['right',['../class_node_tree_a_v_l.html#a2dfb2c03982a74b3b051e49099bec902',1,'NodeTreeAVL']]],
+  ['root_91',['root',['../class_file_system.html#a283a11b858b6b58140c0ad86248044a4',1,'FileSystem::root()'],['../class_tree_a_v_l.html#ac0b5db13387fb0ec3bedd2b4c94a240a',1,'TreeAVL::root()']]],
+  ['rotateleft_92',['rotateLeft',['../class_tree_a_v_l.html#afca99c9286e3c77dcc6a9e996c159ce4',1,'TreeAVL']]],
+  ['rotateright_93',['rotateRight',['../class_tree_a_v_l.html#a3c5fb952cb9ab82d03e7f70a4cc8652c',1,'TreeAVL']]]
 ];

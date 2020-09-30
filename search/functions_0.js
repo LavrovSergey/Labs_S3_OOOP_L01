@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['createfile_98',['createFile',['../class_file_info.html#a0a7399a6e2b53ac06ff0d46c2a6616f8',1,'FileInfo::createFile()'],['../class_file_system.html#ac19858833e4fb470aa5fb5e8905ecef5',1,'FileSystem::createFile()']]]
+  ['add_142',['Add',['../class_flawless_menu_1_1_menu.html#a0c3088fb337dd9706e1ca87b50bb30a7',1,'FlawlessMenu::Menu::Add(std::string item, Menu *menu)'],['../class_flawless_menu_1_1_menu.html#a77c400c1056dc45ce8f9b22c7368afd8',1,'FlawlessMenu::Menu::Add(std::string item, void(*f)(void))']]]
 ];
