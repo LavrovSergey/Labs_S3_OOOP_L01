@@ -364,7 +364,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, i
 template<typename T>
 inline T TreeAVL<T>::pop()
 {
-	if (!root) return nullptr;
+	if (!root) return NULL;
 	auto value = root->value;
 	root = deleteNode(root, root->value, root->priority);
 	return value;
@@ -373,7 +373,7 @@ inline T TreeAVL<T>::pop()
 template<typename T>
 inline T TreeAVL<T>::predict()
 {
-	if (!root) return nullptr;
+	if (!root) return NULL;
 	else return root->value;
 }
 

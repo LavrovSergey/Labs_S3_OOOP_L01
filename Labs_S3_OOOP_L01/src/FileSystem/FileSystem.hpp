@@ -45,6 +45,12 @@ public:
 	*/
 	std::vector<FileInfo*> searchByName(FileInfo* searchFrom, std::string pattern);
 
+	/*! Searches for pattern in file names
+	* \param[in] pattern String search pattern (".psd", "PHOTO_", "kursach.docx", etc).
+	* \returns List of found files.
+	*/
+	std::vector<FileInfo*> searchByName(std::string pattern);
+
 	/*! Creates file at given path.
 	* If there is no such path, it will be created.
 	* \param[in] path Full path of the created file.

@@ -4,10 +4,13 @@
 * \version 1.0 30/09/20
 */
 
+
 #ifndef INTERACTION_HPP
 #define INTERACTION_HPP
 
 #include <iostream>
+// _getch
+#include <conio.h>
 
 #include "PriorQueue/Heap/Heap.hpp"
 #include "PriorQueue/List/LinkedList.hpp"
@@ -27,10 +30,21 @@ void function_createList_file();
 void function_createHeap_file();
 void function_createTree_file();
 
-void function_push();
-void function_pop();
-void function_predict();
-void function_print();
+void function_push_int();
+void function_pop_int();
+void function_predict_int();
+void function_print_int();
+
+void function_push_file();
+void function_pop_file();
+void function_predict_file();
+void function_print_file();
+
+void function_filesystem_create();
+void function_filesystem_createReal();
+void function_filesystem_addFile();
+void function_filesystem_search();
+void function_filesystem_print();
 
 void wait();
 #endif // !INTERACTION_HPP

@@ -90,6 +90,11 @@ std::vector<FileInfo*> FileSystem::searchByName(FileInfo* searchFrom, std::strin
     return results;
 }
 
+std::vector<FileInfo*> FileSystem::searchByName(std::string pattern)
+{
+    return searchByName(root, pattern);
+}
+
 FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, uint64_t length, FileType fileType, std::string symlinkTarget)
 {
     //split path on subdirs

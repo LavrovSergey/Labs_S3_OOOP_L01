@@ -100,7 +100,6 @@ public:
 	std::string print() override;
 };
 
-#endif // !HEAP_HPP
 
 /*PRIVATE*/
 
@@ -240,5 +239,10 @@ inline T Heap<T>::predict()
 template<typename T>
 inline std::string Heap<T>::print()
 {
-	return std::string();
+	std::string result;
+	for (int i = 0; i < elements.size(); ++i)
+		result += std::to_string(elements[i].value) + " ";
+	return result;
 }
+
+#endif // !HEAP_HPP

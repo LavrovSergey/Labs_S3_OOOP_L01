@@ -42,10 +42,10 @@ int main()
 	menuQueueInt->Add("Create list", function_createList_int);
 	menuQueueInt->Add("Create heap", function_createHeap_int);
 	menuQueueInt->Add("Create tree", function_createTree_int);
-	menuQueueInt->Add("Add element", function_push);
-	menuQueueInt->Add("Get element", function_pop);
-	menuQueueInt->Add("Predict element", function_predict);
-	menuQueueInt->Add("Print queue", function_print);
+	menuQueueInt->Add("Add element", function_push_int);
+	menuQueueInt->Add("Get element", function_pop_int);
+	menuQueueInt->Add("Predict element", function_predict_int);
+	menuQueueInt->Add("Print queue", function_print_int);
 	menuQueue->Add("Integer queue", menuQueueInt);
 
 
@@ -53,11 +53,11 @@ int main()
 	menuQueueFile->Add("Create list", function_createList_file);
 	menuQueueFile->Add("Create heap", function_createHeap_file);
 	menuQueueFile->Add("Create tree", function_createTree_file);
-	menuQueueFile->Add("Add element", function_push);
-	menuQueueFile->Add("Get element", function_pop);
-	menuQueueFile->Add("Predict element", function_predict);
-	menuQueueFile->Add("Print queue", function_print);
-	menuQueue->Add("File system queue", menuQueueFile);
+	menuQueueFile->Add("Add element", function_push_file);
+	menuQueueFile->Add("Get element", function_pop_file);
+	menuQueueFile->Add("Predict element", function_predict_file);
+	menuQueueFile->Add("Print queue", function_print_file);
+	//menuQueue->Add("File system queue", menuQueueFile);
 
 
 	root->Add("Work with queue", menuQueue);
@@ -65,7 +65,10 @@ int main()
 
 
 	auto menuFileSystem = new Menu("Work with file system");
-	
+	menuFileSystem->Add("Create empty", function_filesystem_create);
+	menuFileSystem->Add("Create from real filesystem", function_filesystem_createReal);
+	menuFileSystem->Add("Add file", function_filesystem_addFile);
+	menuFileSystem->Add("Print", function_filesystem_print);
 
 	root->Add("Work with file system", menuFileSystem);
 
