@@ -21,11 +21,14 @@ int main()
 {
 
 	FileSystem fileSystem("D:\\Doxygen_res_01");
+	fileSystem.createFile("D:\\Doxygen_res_01\\_symlink\\wow\\new\\file.exe", 0, 0, FileType::file);
+
 	std::cout << fileSystem.print() << std::endl;
 
-	auto res = fileSystem.searchByName(fileSystem.root, "node");
+
+	/*auto res = fileSystem.searchByName(fileSystem.root, "node");
 	for (auto& i : res)
-		std::cout << i->getFullPath() << std::endl;
+		std::cout << i->getFullPath() << std::endl;*/
 
 	/*fileSystem.createFile("user\\games\\factorio.exe", 0, 0, FileType::file);
 	fileSystem.createFile("user\\facts\\docs.doc", 0, 0, FileType::file);
@@ -39,7 +42,7 @@ int main()
 	for (auto& i : res)
 		std::cout << i->getFullPath() << std::endl;*/
 
-	PriorQueue<int>* queue = new Heap<int>();
+	/*PriorQueue<int>* queue = new Heap<int>();
 	queue->push(5, 5);
 	std::cout << queue->print();
 
@@ -70,5 +73,5 @@ int main()
 	for (int i = 0; i < 9; ++i)
 	{
 		std::cout << queue->pop() << std::endl;
-	}
+	}*/
 }

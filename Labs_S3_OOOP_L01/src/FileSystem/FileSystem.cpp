@@ -45,20 +45,6 @@ FileSystem::FileSystem()
     root = new FileInfo("root", 0, 0, FileType::directory);
 }
 
-void demo_status(const fs::path& p, fs::file_status s)
-{
-    std::cout << p;
-    // alternative: switch(s.type()) { case fs::file_type::regular: ...}
-    if (fs::is_regular_file(s)) std::cout << " is a regular file\n";
-    if (fs::is_directory(s)) std::cout << " is a directory\n";
-    if (fs::is_block_file(s)) std::cout << " is a block device\n";
-    if (fs::is_character_file(s)) std::cout << " is a character device\n";
-    if (fs::is_fifo(s)) std::cout << " is a named IPC pipe\n";
-    if (fs::is_socket(s)) std::cout << " is a named IPC socket\n";
-    if (fs::is_symlink(s)) std::cout << " is a symlink\n";
-    if (!fs::exists(s)) std::cout << " does not exist\n";
-}
-
 FileSystem::FileSystem(std::string realPath)
 {
     root = new FileInfo("root", 0, 0, FileType::directory);
@@ -78,9 +64,12 @@ FileSystem::FileSystem(std::string realPath)
         if (fs::is_socket(status))                  type = FileType::soket;
         if (fs::is_symlink(entry.symlink_status())) type = FileType::link;
 
-        createFile(path, 0, entry.file_size(), type);
+        std::stringstream ssymlinkPath;
+        if(type == FileType::link)
+            ssymlinkPath << fs::read_symlink(entry.path());
+        std::string symlinkPath = ssymlinkPath.str();
 
-        
+        createFile(path, 0, entry.file_size(), type, symlinkPath);
     }
 }
 
@@ -101,20 +90,24 @@ std::vector<FileInfo*> FileSystem::searchByName(FileInfo* searchFrom, std::strin
     return results;
 }
 
-FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, uint64_t length, FileType fileType)
+FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, uint64_t length, FileType fileType, std::string symlinkTarget)
 {
     //split path on subdirs
     auto subdirs = Helper::splitString(path, "\\");
     auto subdir = root;
+
+    //remove exrta \ or "
     for (int i = 0; i < subdirs.size(); ++i)
     {
         subdirs[i].erase(std::remove(subdirs[i].begin(), subdirs[i].end(), '\\'), subdirs[i].end());
         subdirs[i].erase(std::remove(subdirs[i].begin(), subdirs[i].end(), '\"'), subdirs[i].end());
     }
 
-    for (auto& i : subdirs)
+    //iterate each 'subdir'
+    for (auto i = subdirs.begin(); i != subdirs.end(); ++i)
     {
-        if (i == "")
+        //skip empty artifact
+        if (*i == "")
             continue;
         
         //for every subdir check it existance
@@ -122,7 +115,7 @@ FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, ui
         for (auto& j : subdir->children)
         {
             //go level down if exist
-            if (j->name == i &&
+            if (j->name == *i &&
                 j->fileType == FileType::directory)
             {
                 subdir = j;
@@ -130,25 +123,30 @@ FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, ui
                 break;
             }
 
-            /*if (j->name == i &&
+            //create file if symlink
+            if (j->name == *i &&
                 j->fileType == FileType::link)
             {
+                //create new path according to symlink
                 std::string pathLink;
-                for (auto &k : subdirs)
-                    if(k - subdirs.begin())
-                    pathLink += subdirs[k];
+                for(auto k = i + 1; k != subdirs.end(); ++k)
+                    pathLink += *k + "\\";
+
                 pathLink = j->symlinkTarget + "\\" + pathLink;
 
-                return;
-            }*/
+                //create file, but for new path
+                //we don't need further creation of subdirs
+                return createFile(pathLink, dateTimeCreation, length, fileType);
+            }
         }
+
         //create subdir if not exist
         if (!hasChild)
         {
             //if it's last subdir - it is file, apply parameters
-            auto newDir = subdirs.back() != i ?
-                new FileInfo(i, DateTime(0), 0, FileType::directory) :
-                new FileInfo(i, dateTimeCreation, length, fileType);
+            auto newDir = subdirs.back() != *i ?
+                new FileInfo(*i, DateTime(0), 0, FileType::directory) :
+                new FileInfo(*i, dateTimeCreation, length, fileType, symlinkTarget);
             subdir->createFile(newDir);
             subdir = newDir;
         }

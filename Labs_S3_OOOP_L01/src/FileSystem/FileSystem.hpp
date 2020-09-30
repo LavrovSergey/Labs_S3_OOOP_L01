@@ -53,7 +53,7 @@ public:
 	* \param[in] fileType Type of file.
 	* \returns FileInfo of new file.
 	*/
-	FileInfo* createFile(std::string path, DateTime dateTimeCreation, uint64_t length, FileType fileType);
+	FileInfo* createFile(std::string path, DateTime dateTimeCreation, uint64_t length, FileType fileType, std::string symlinkTarget = "");
 
 	/*! Converts file system to string tree.
 	* \returns Tree in string format.
