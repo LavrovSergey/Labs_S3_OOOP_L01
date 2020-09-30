@@ -73,34 +73,31 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef NODE_LINKED_LIST_HPP</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define NODE_LINKED_LIST_HPP</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_node_linked_list.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_node_linked_list.html">NodeLinkedList</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_node_linked_list.html#a3c2445135fb536c93b1d20cdc88af351">   15</a></span>&#160;    T <a class="code" href="class_node_linked_list.html#a3c2445135fb536c93b1d20cdc88af351">value</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_node_linked_list.html#a91bc0f5edb811baf81fe5ae2a83e3025">   18</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_node_linked_list.html#a91bc0f5edb811baf81fe5ae2a83e3025">priority</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">   21</a></span>&#160;    <a class="code" href="class_node_linked_list.html">NodeLinkedList&lt;T&gt;</a>* <a class="code" href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">next</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">NodeLinkedList</a>(T <a class="code" href="class_node_linked_list.html#a3c2445135fb536c93b1d20cdc88af351">value</a>, <span class="keywordtype">int</span> <a class="code" href="class_node_linked_list.html#a91bc0f5edb811baf81fe5ae2a83e3025">priority</a>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">   32</a></span>&#160;<a class="code" href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">NodeLinkedList&lt;T&gt;::NodeLinkedList</a>(T value, <span class="keywordtype">int</span> priority)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    this-&gt;value = value;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    this-&gt;priority = priority;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    this-&gt;next = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif // !NODE_LINKED_LIST_HPP</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../NodePriority.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_node_linked_list.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_node_linked_list.html">NodeLinkedList</a> : <span class="keyword">public</span> <a class="code" href="class_node_priority.html">NodePriority</a>&lt;T&gt;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">   17</a></span>&#160;    <a class="code" href="class_node_linked_list.html">NodeLinkedList&lt;T&gt;</a>* <a class="code" href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">next</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">NodeLinkedList</a>(T <a class="code" href="class_node_priority.html#af86d006b378f6dde066a43b17ffe4226">value</a>, <span class="keywordtype">int</span> <a class="code" href="class_node_priority.html#a271ba907bf90a139e6b09687d816ca27">priority</a>);<span class="comment">// : NodePriority&lt;T&gt;::NodePriority(value, priority);</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">   28</a></span>&#160;<a class="code" href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">NodeLinkedList&lt;T&gt;::NodeLinkedList</a>(T value, <span class="keywordtype">int</span> priority) : <a class="code" href="class_node_priority.html">NodePriority</a>&lt;T&gt;(value, priority)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">next</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif // !NODE_LINKED_LIST_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_node_linked_list_html_a9913328192aaef768ef655a7ec87dd5f"><div class="ttname"><a href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">NodeLinkedList::NodeLinkedList</a></div><div class="ttdeci">NodeLinkedList(T value, int priority)</div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:32</div></div>
-<div class="ttc" id="aclass_node_linked_list_html_a3c2445135fb536c93b1d20cdc88af351"><div class="ttname"><a href="class_node_linked_list.html#a3c2445135fb536c93b1d20cdc88af351">NodeLinkedList::value</a></div><div class="ttdeci">T value</div><div class="ttdoc">Value that our queue contains.</div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:15</div></div>
-<div class="ttc" id="aclass_node_linked_list_html_a91bc0f5edb811baf81fe5ae2a83e3025"><div class="ttname"><a href="class_node_linked_list.html#a91bc0f5edb811baf81fe5ae2a83e3025">NodeLinkedList::priority</a></div><div class="ttdeci">int priority</div><div class="ttdoc">Priority of this value.</div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:18</div></div>
-<div class="ttc" id="aclass_node_linked_list_html"><div class="ttname"><a href="class_node_linked_list.html">NodeLinkedList</a></div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:12</div></div>
-<div class="ttc" id="aclass_node_linked_list_html_a3a8c49b0a1f6215bde03914e37839b69"><div class="ttname"><a href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">NodeLinkedList::next</a></div><div class="ttdeci">NodeLinkedList&lt; T &gt; * next</div><div class="ttdoc">Next element in list.</div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:21</div></div>
+<div class="ttc" id="aclass_node_priority_html_a271ba907bf90a139e6b09687d816ca27"><div class="ttname"><a href="class_node_priority.html#a271ba907bf90a139e6b09687d816ca27">NodePriority::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition:</b> NodePriority.hpp:23</div></div>
+<div class="ttc" id="aclass_node_linked_list_html_a9913328192aaef768ef655a7ec87dd5f"><div class="ttname"><a href="class_node_linked_list.html#a9913328192aaef768ef655a7ec87dd5f">NodeLinkedList::NodeLinkedList</a></div><div class="ttdeci">NodeLinkedList(T value, int priority)</div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:28</div></div>
+<div class="ttc" id="aclass_node_priority_html"><div class="ttname"><a href="class_node_priority.html">NodePriority</a></div><div class="ttdef"><b>Definition:</b> NodePriority.hpp:17</div></div>
+<div class="ttc" id="aclass_node_priority_html_af86d006b378f6dde066a43b17ffe4226"><div class="ttname"><a href="class_node_priority.html#af86d006b378f6dde066a43b17ffe4226">NodePriority::value</a></div><div class="ttdeci">T value</div><div class="ttdef"><b>Definition:</b> NodePriority.hpp:20</div></div>
+<div class="ttc" id="aclass_node_linked_list_html"><div class="ttname"><a href="class_node_linked_list.html">NodeLinkedList</a></div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:14</div></div>
+<div class="ttc" id="aclass_node_linked_list_html_a3a8c49b0a1f6215bde03914e37839b69"><div class="ttname"><a href="class_node_linked_list.html#a3a8c49b0a1f6215bde03914e37839b69">NodeLinkedList::next</a></div><div class="ttdeci">NodeLinkedList&lt; T &gt; * next</div><div class="ttdef"><b>Definition:</b> NodeLinkedList.hpp:17</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

@@ -79,8 +79,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab10427a0533e3d8f03bfdb88e4ccaa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9714920b2ffeb7918a1f34fa1dfc59de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a9714920b2ffeb7918a1f34fa1dfc59de">searchByName</a> (<a class="el" href="class_file_info.html">FileInfo</a> *searchFrom, std::string pattern)</td></tr>
 <tr class="separator:a9714920b2ffeb7918a1f34fa1dfc59de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac19858833e4fb470aa5fb5e8905ecef5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_file_info.html">FileInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#ac19858833e4fb470aa5fb5e8905ecef5">createFile</a> (std::string path, <a class="el" href="class_date_time.html">DateTime</a> dateTimeCreation, uint64_t length, <a class="el" href="_file_type_8hpp.html#a2c794c5c13ab4dd7e65bad031dbe41c3">FileType</a> fileType)</td></tr>
-<tr class="separator:ac19858833e4fb470aa5fb5e8905ecef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a677850491027ca4dacf8b33273305c82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a677850491027ca4dacf8b33273305c82">searchByName</a> (std::string pattern)</td></tr>
+<tr class="separator:a677850491027ca4dacf8b33273305c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d5f394a39e873614176b89b4862e814"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_file_info.html">FileInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a7d5f394a39e873614176b89b4862e814">createFile</a> (std::string path, <a class="el" href="class_date_time.html">DateTime</a> dateTimeCreation, uint64_t length, <a class="el" href="_file_type_8hpp.html#a2c794c5c13ab4dd7e65bad031dbe41c3">FileType</a> fileType, std::string symlinkTarget=&quot;&quot;)</td></tr>
+<tr class="separator:a7d5f394a39e873614176b89b4862e814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae347e908d2876531e66693340f4b89e8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#ae347e908d2876531e66693340f4b89e8">print</a> ()</td></tr>
 <tr class="separator:ae347e908d2876531e66693340f4b89e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -138,8 +140,8 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac19858833e4fb470aa5fb5e8905ecef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac19858833e4fb470aa5fb5e8905ecef5">&#9670;&nbsp;</a></span>createFile()</h2>
+<a id="a7d5f394a39e873614176b89b4862e814"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d5f394a39e873614176b89b4862e814">&#9670;&nbsp;</a></span>createFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +168,13 @@ Private Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="_file_type_8hpp.html#a2c794c5c13ab4dd7e65bad031dbe41c3">FileType</a>&#160;</td>
-          <td class="paramname"><em>fileType</em>&#160;</td>
+          <td class="paramname"><em>fileType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>symlinkTarget</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -250,7 +258,7 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a9714920b2ffeb7918a1f34fa1dfc59de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9714920b2ffeb7918a1f34fa1dfc59de">&#9670;&nbsp;</a></span>searchByName()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9714920b2ffeb7918a1f34fa1dfc59de">&#9670;&nbsp;</a></span>searchByName() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -277,6 +285,31 @@ Private Member Functions</h2></td></tr>
 <p>Searches for pattern in file names </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">searchFrom</td><td>Root of search. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>String search pattern (".psd", "PHOTO_", "kursach.docx", etc). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>List of found files. </dd></dl>
+
+</div>
+</div>
+<a id="a677850491027ca4dacf8b33273305c82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a677850491027ca4dacf8b33273305c82">&#9670;&nbsp;</a></span>searchByName() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt; FileSystem::searchByName </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>pattern</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Searches for pattern in file names </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>String search pattern (".psd", "PHOTO_", "kursach.docx", etc). </td></tr>
   </table>
   </dd>
