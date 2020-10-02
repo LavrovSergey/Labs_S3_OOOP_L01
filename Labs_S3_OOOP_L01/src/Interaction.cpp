@@ -1,11 +1,7 @@
 #include "Interaction.hpp"
 
-bool isInt = true;
-PriorQueue<int>* priorQueueI;
-PriorQueue<FileSystem>* priorQueueF;
-FileSystem* fileSystem;
 
-void function_createList_int()
+void Interactor::function_createList_int()
 {
 	if (priorQueueI)
 	{
@@ -17,7 +13,7 @@ void function_createList_int()
 	wait();
 }
 
-void function_createHeap_int()
+void Interactor::function_createHeap_int()
 {
 	if (priorQueueI)
 	{
@@ -29,7 +25,7 @@ void function_createHeap_int()
 	wait();
 }
 
-void function_createTree_int()
+void Interactor::function_createTree_int()
 {
 	if (priorQueueI)
 	{
@@ -41,7 +37,7 @@ void function_createTree_int()
 	wait();
 }
 
-void function_createList_file()
+void Interactor::function_createList_file()
 {
 	if (priorQueueF)
 	{
@@ -53,7 +49,7 @@ void function_createList_file()
 	wait();
 }
 
-void function_createHeap_file()
+void Interactor::function_createHeap_file()
 {
 	if (priorQueueF)
 	{
@@ -65,7 +61,7 @@ void function_createHeap_file()
 	wait();
 }
 
-void function_createTree_file()
+void Interactor::function_createTree_file()
 {
 	if (priorQueueF)
 	{
@@ -77,7 +73,7 @@ void function_createTree_file()
 	wait();
 }
 
-void function_push_int()
+void Interactor::function_push_int()
 {
 	std::cout << "Enter value ";
 	int v; std::cin >> v;
@@ -88,42 +84,42 @@ void function_push_int()
 	wait();
 }
 
-void function_pop_int()
+void Interactor::function_pop_int()
 {
 	std::cout << "Value : " << priorQueueI->pop() << std::endl;
 	wait();
 }
 
-void function_predict_int()
+void Interactor::function_predict_int()
 {
 	std::cout << "Value : " << priorQueueI->predict() << std::endl;
 	wait();
 }
 
-void function_print_int()
+void Interactor::function_print_int()
 {
 	std::cout << priorQueueI->print() << std::endl;
 	wait();
 }
 
 
-void function_push_file()
+void Interactor::function_push_file()
 {
 }
 
-void function_pop_file()
+void Interactor::function_pop_file()
 {
 }
 
-void function_predict_file()
+void Interactor::function_predict_file()
 {
 }
 
-void function_print_file()
+void Interactor::function_print_file()
 {
 }
 
-void function_filesystem_create()
+void Interactor::function_filesystem_create()
 {
 	if (fileSystem) 
 	{
@@ -135,7 +131,7 @@ void function_filesystem_create()
 	wait();
 }
 
-void function_filesystem_createReal()
+void Interactor::function_filesystem_createReal()
 {
 	if (fileSystem)
 	{
@@ -150,7 +146,7 @@ void function_filesystem_createReal()
 	wait();
 }
 
-void function_filesystem_addFile()
+void Interactor::function_filesystem_addFile()
 {
 	if (fileSystem)
 	{
@@ -165,7 +161,7 @@ void function_filesystem_addFile()
 	}
 }
 
-void function_filesystem_search()
+void Interactor::function_filesystem_search()
 {
 	std::cout << "Enter name" << std::endl;
 	std::string path;
@@ -176,13 +172,13 @@ void function_filesystem_search()
 	wait();
 }
 
-void function_filesystem_print()
+void Interactor::function_filesystem_print()
 {
 	std::cout << fileSystem->print();
 	wait();
 }
 
-void wait()
+void Interactor::wait()
 {
 	std::cout << "Press any key..." << std::endl;
 	_getch();
