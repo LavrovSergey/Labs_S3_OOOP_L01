@@ -27,7 +27,10 @@ using namespace FlawlessMenu;
 */
 int main()
 {
-	
+	Interactor::fileSystem = NULL;
+	Interactor::priorQueueF = NULL;
+	Interactor::priorQueueI = NULL;
+
 	//Setup static variables first
 	Menu::Selector = ">";
 	Menu::Filler = "==========";
@@ -39,24 +42,24 @@ int main()
 	auto menuQueue = new Menu("Work with queue");
 
 	auto menuQueueInt = new Menu("Integer queue");
-	menuQueueInt->Add("Create list", function_createList_int);
-	menuQueueInt->Add("Create heap", function_createHeap_int);
-	menuQueueInt->Add("Create tree", function_createTree_int);
-	menuQueueInt->Add("Add element", function_push_int);
-	menuQueueInt->Add("Get element", function_pop_int);
-	menuQueueInt->Add("Predict element", function_predict_int);
-	menuQueueInt->Add("Print queue", function_print_int);
+	menuQueueInt->Add("Create list",		Interactor::function_createList_int);
+	menuQueueInt->Add("Create heap",		Interactor::function_createHeap_int);
+	menuQueueInt->Add("Create tree",		Interactor::function_createTree_int);
+	menuQueueInt->Add("Add element",		Interactor::function_push_int);
+	menuQueueInt->Add("Get element",		Interactor::function_pop_int);
+	menuQueueInt->Add("Predict element",	Interactor::function_predict_int);
+	menuQueueInt->Add("Print queue",		Interactor::function_print_int);
 	menuQueue->Add("Integer queue", menuQueueInt);
 
 
 	auto menuQueueFile = new Menu("File system queue");
-	menuQueueFile->Add("Create list", function_createList_file);
-	menuQueueFile->Add("Create heap", function_createHeap_file);
-	menuQueueFile->Add("Create tree", function_createTree_file);
-	menuQueueFile->Add("Add element", function_push_file);
-	menuQueueFile->Add("Get element", function_pop_file);
-	menuQueueFile->Add("Predict element", function_predict_file);
-	menuQueueFile->Add("Print queue", function_print_file);
+	menuQueueFile->Add("Create list",		Interactor::function_createList_file);
+	menuQueueFile->Add("Create heap",		Interactor::function_createHeap_file);
+	menuQueueFile->Add("Create tree",		Interactor::function_createTree_file);
+	menuQueueFile->Add("Add element",		Interactor::function_push_file);
+	menuQueueFile->Add("Get element",		Interactor::function_pop_file);
+	menuQueueFile->Add("Predict element",	Interactor::function_predict_file);
+	menuQueueFile->Add("Print queue",		Interactor::function_print_file);
 	//menuQueue->Add("File system queue", menuQueueFile);
 
 
@@ -65,10 +68,10 @@ int main()
 
 
 	auto menuFileSystem = new Menu("Work with file system");
-	menuFileSystem->Add("Create empty", function_filesystem_create);
-	menuFileSystem->Add("Create from real filesystem", function_filesystem_createReal);
-	menuFileSystem->Add("Add file", function_filesystem_addFile);
-	menuFileSystem->Add("Print", function_filesystem_print);
+	menuFileSystem->Add("Create empty",					Interactor::function_filesystem_create);
+	menuFileSystem->Add("Create from real filesystem",	Interactor::function_filesystem_createReal);
+	menuFileSystem->Add("Add file",						Interactor::function_filesystem_addFile);
+	menuFileSystem->Add("Print",						Interactor::function_filesystem_print);
 
 	root->Add("Work with file system", menuFileSystem);
 

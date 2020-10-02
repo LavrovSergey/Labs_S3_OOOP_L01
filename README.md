@@ -18,5 +18,3 @@
 #### Додатково  
 - [ ] Unit tests  
 - [x] Documentation  
-
-Test review

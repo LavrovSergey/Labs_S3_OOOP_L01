@@ -17,35 +17,40 @@
 #include "PriorQueue/Tree/TreeAVL.hpp"
 #include "FileSystem/FileSystem.hpp"
 
-extern bool isInt;
-extern PriorQueue<int>* priorQueueI;
-extern PriorQueue<FileSystem>* priorQueueF;
-extern FileSystem* fileSystem;
+class Interactor
+{
+public:
+	inline static PriorQueue<int>* priorQueueI;
+	inline static PriorQueue<FileSystem>* priorQueueF;
+	inline static FileSystem* fileSystem;
 
-void function_createList_int();
-void function_createHeap_int();
-void function_createTree_int();
+	static void function_createList_int();
+	static void function_createHeap_int();
+	static void function_createTree_int();
 
-void function_createList_file();
-void function_createHeap_file();
-void function_createTree_file();
+	static void function_createList_file();
+	static void function_createHeap_file();
+	static void function_createTree_file();
 
-void function_push_int();
-void function_pop_int();
-void function_predict_int();
-void function_print_int();
+	static void function_push_int();
+	static void function_pop_int();
+	static void function_predict_int();
+	static void function_print_int();
 
-void function_push_file();
-void function_pop_file();
-void function_predict_file();
-void function_print_file();
+	static void function_push_file();
+	static void function_pop_file();
+	static void function_predict_file();
+	static void function_print_file();
 
-void function_filesystem_create();
-void function_filesystem_createReal();
-void function_filesystem_addFile();
-void function_filesystem_search();
-void function_filesystem_print();
+	static void function_filesystem_create();
+	static void function_filesystem_createReal();
+	static void function_filesystem_addFile();
+	static void function_filesystem_search();
+	static void function_filesystem_print();
 
-void wait();
+	static void wait();
+};
+
+
 #endif // !INTERACTION_HPP
 
