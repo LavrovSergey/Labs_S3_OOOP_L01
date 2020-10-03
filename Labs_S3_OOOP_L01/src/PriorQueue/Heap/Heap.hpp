@@ -62,13 +62,13 @@ class Heap : public PriorQueue<T>
 	int getFirst();
 
 	/*! Deletes element on index
-	* \param index Index to delete.
+	* \param[in] index Index to delete.
 	*/
 	void deleteElement(int index);
 
 	/*! Add new value
-	* \param value Value to insert.
-	* \param priority Priority of value.
+	* \param[in] value Value to insert.
+	* \param[in] priority Priority of value.
 	*/
 	void insertNode(T value, int priority);
 

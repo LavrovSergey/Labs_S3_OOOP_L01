@@ -64,7 +64,7 @@ public:
 	std::string getFullPath();
 
 	/*! Creates file in current dir if it is dir.
-	* \param file[in] New file to add.
+	* \param[in] file New file to add.
 	* \exception std::invalid_argument Thrown if file type is not directory
 	*/
 	void createFile(FileInfo* file);

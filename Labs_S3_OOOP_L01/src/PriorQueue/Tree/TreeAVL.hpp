@@ -89,13 +89,13 @@ public:
 	T predict() override;
 
 	/*! Gets node height.
-	* \param node[int] Node with height.
+	* \param[in] node Node with height.
 	* \returns 0 if node is nullptr or it's height.
 	*/
 	int getNodeHeight(NodeTreeAVL<T>* node);
 
 	/*! Get the balance factor of this ancestor node.
-	* \param node[int] Node with balance.
+	* \param[in] node Node with balance.
 	* \returns Balance factor of this ancestor node.
 	*/
 	int getNodeBalance(NodeTreeAVL<T>* node);

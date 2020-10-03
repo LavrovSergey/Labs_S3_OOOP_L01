@@ -37,7 +37,7 @@ public:
 
 	/*! Constructor
 	* Imports All subdirectories and files from this pc file system
-	* \param realPath Full path of the existing directory.
+	* \param[in] realPath Full path of the existing directory.
 	*/
 	FileSystem(std::string realPath);
 

@@ -20,8 +20,8 @@ public:
 	~PriorQueue();
 
 	/*! Pushes item with priority to queue and puts it on right position.
-	* \param item Value to store.
-	* \param priority Priority of item.
+	* \param[in] item Value to store.
+	* \param[in] priority Priority of item.
 	*/
 	virtual void push(T item, unsigned int priority);
 
