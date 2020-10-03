@@ -8,6 +8,7 @@
 #define LINKED_LIST_HPP
 
 #include "../PriorQueue.hpp"
+#include "../../Helper/Helper.hpp"
 #include "NodeLinkedList.hpp"
 
 template <typename T>
@@ -107,13 +108,13 @@ inline std::string LinkedList<T>::print()
 	if (!head)
 		return "\n";
 	std::string result;
-	result += std::to_string(head->value);
+	result += notstd::to_string(head->value);
 	NodeLinkedList<T>* current = head;
 	while (current->next)
 	{
 		current = current->next;
 		result += "->";
-		result += std::to_string(current->value);
+		result += notstd::to_string(current->value);
 	}
 	result += "\n";
 	return result;

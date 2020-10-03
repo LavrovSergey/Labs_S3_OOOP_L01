@@ -37,6 +37,8 @@ void Interactor::function_createTree_int()
 	wait();
 }
 
+
+
 void Interactor::function_createList_file()
 {
 	if (priorQueueF)
@@ -44,7 +46,7 @@ void Interactor::function_createList_file()
 		delete priorQueueF;
 		std::cout << "Old queue deleted" << std::endl;
 	}
-	//priorQueueF = new LinkedList<FileSystem>();
+	priorQueueF = new LinkedList<FileSystem>();
 	std::cout << "List created" << std::endl;
 	wait();
 }
@@ -56,7 +58,7 @@ void Interactor::function_createHeap_file()
 		delete priorQueueF;
 		std::cout << "Old queue deleted" << std::endl;
 	}
-	//priorQueueF = new Heap<FileSystem>();
+	priorQueueF = new Heap<FileSystem>();
 	std::cout << "Heap created" << std::endl;
 	wait();
 }
@@ -68,10 +70,12 @@ void Interactor::function_createTree_file()
 		delete priorQueueF;
 		std::cout << "Old queue deleted" << std::endl;
 	}
-	//priorQueueF = new TreeAVL<FileSystem>();
+	priorQueueF = new TreeAVL<FileSystem>();
 	std::cout << "Tree created" << std::endl;
 	wait();
 }
+
+
 
 void Interactor::function_push_int()
 {
@@ -103,21 +107,43 @@ void Interactor::function_print_int()
 }
 
 
+
 void Interactor::function_push_file()
 {
+	std::string path;
+
+	while (!Helper::isFileExists(path))
+	{
+		std::cout << "Enter real file path: " << std::endl;
+		std::getline(std::cin, path);
+	}
+
+	std::cout << "Enter priority: ";
+	int p; std::cin >> p;
+	priorQueueF->push(FileSystem(path), p);
+	std::cout << "Pushed." << std::endl;
+	wait();
 }
 
 void Interactor::function_pop_file()
 {
+	std::cout << "Value : " << priorQueueF->pop().print() << std::endl;
+	wait();
 }
 
 void Interactor::function_predict_file()
 {
+	std::cout << "Value : " << priorQueueF->predict().print() << std::endl;
+	wait();
 }
 
 void Interactor::function_print_file()
 {
+	std::cout << priorQueueF->print() << std::endl;
+	wait();
 }
+
+
 
 void Interactor::function_filesystem_create()
 {
@@ -177,6 +203,8 @@ void Interactor::function_filesystem_print()
 	std::cout << fileSystem->print();
 	wait();
 }
+
+
 
 void Interactor::wait()
 {

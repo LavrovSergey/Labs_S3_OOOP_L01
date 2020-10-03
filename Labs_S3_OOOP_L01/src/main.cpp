@@ -23,7 +23,7 @@ using namespace FlawlessMenu;
 
 //! main function
 /*!
-* Starts a program
+* Starts a program. Assigns menus
 */
 int main()
 {
@@ -60,7 +60,7 @@ int main()
 	menuQueueFile->Add("Get element",		Interactor::function_pop_file);
 	menuQueueFile->Add("Predict element",	Interactor::function_predict_file);
 	menuQueueFile->Add("Print queue",		Interactor::function_print_file);
-	//menuQueue->Add("File system queue", menuQueueFile);
+	menuQueue->Add("File system queue", menuQueueFile);
 
 
 	root->Add("Work with queue", menuQueue);

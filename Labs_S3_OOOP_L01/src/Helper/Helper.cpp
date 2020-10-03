@@ -14,3 +14,9 @@ std::vector<std::string> Helper::splitString(std::string input, std::string deli
     result.push_back(input);
     return result;
 }
+
+bool Helper::isFileExists(const std::string& name)
+{
+    struct stat buffer;
+    return (stat(name.c_str(), &buffer) == 0);
+}

@@ -71,6 +71,9 @@ FileSystem::FileSystem(std::string realPath)
 
         createFile(path, 0, entry.file_size(), type, symlinkPath);
     }
+
+    //update printed variable
+    printedSystem = print();
 }
 
 std::vector<FileInfo*> FileSystem::searchByName(FileInfo* searchFrom, std::string pattern)
@@ -156,10 +159,20 @@ FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, ui
             subdir = newDir;
         }
     }
+
+    //update printed variable
+    printedSystem = print();
+
+
     return subdir;
 }
 
 std::string FileSystem::print()
 {
     return printNode("", root, true);
+}
+
+std::string to_string(FileSystem const& self)
+{
+    return self.printedSystem;
 }

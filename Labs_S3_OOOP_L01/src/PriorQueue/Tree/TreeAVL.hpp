@@ -272,7 +272,7 @@ inline std::string TreeAVL<T>::printNode(const std::string& prefix, const NodeTr
 		result += line;
 
 		//add node value
-		result += "[p: " + std::to_string(node->priority) + "  v: " + std::to_string(node->value) + "]\n";
+		result += "[p: " + std::to_string(node->priority) + "  v: " + notstd::to_string(node->value) + "]\n";
 
 		//enter the next tree level - left and right branch
 		result += printNode(prefix + (isLeft ? "|   " : "    "), node->left, true);
@@ -364,7 +364,7 @@ inline NodeTreeAVL<T>* TreeAVL<T>::insertNode(NodeTreeAVL<T>* target, T value, i
 template<typename T>
 inline T TreeAVL<T>::pop()
 {
-	if (!root) return NULL;
+	if (!root) return T();
 	auto value = root->value;
 	root = deleteNode(root, root->value, root->priority);
 	return value;
@@ -373,7 +373,7 @@ inline T TreeAVL<T>::pop()
 template<typename T>
 inline T TreeAVL<T>::predict()
 {
-	if (!root) return NULL;
+	if (!root) return T();
 	else return root->value;
 }
 

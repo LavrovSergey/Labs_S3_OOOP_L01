@@ -27,6 +27,9 @@ public:
 	/*! File system root*/
 	FileInfo* root;
 
+	/*! Contains already printed filesystem.*/
+	std::string printedSystem;
+
 	/*! Constructor 
 	* Sets basic paramters - directory, name=root, etc
 	*/
@@ -65,6 +68,12 @@ public:
 	* \returns Tree in string format.
 	*/
 	std::string print();
+
+	/*! Print function for std::to_string overriding.
+	* \param[in] self FileSystem self instance.
+	* \returns result of FileSystem::print().
+	*/
+	friend std::string to_string(FileSystem const& self);
 };
 
 #endif // !FILE_SYSTEM_HPP

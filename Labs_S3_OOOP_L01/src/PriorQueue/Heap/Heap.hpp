@@ -9,6 +9,7 @@
 
 #include "../PriorQueue.hpp"
 #include "../NodePriority.hpp"
+#include "../../Helper/Helper.hpp"
 
 #include <vector>
 
@@ -233,7 +234,9 @@ inline T Heap<T>::pop()
 template<typename T>
 inline T Heap<T>::predict()
 {
-	return getFirst();
+	if (elements.size() == 0) 
+		return T();
+	return elements[0].value;
 }
 
 template<typename T>
@@ -241,7 +244,7 @@ inline std::string Heap<T>::print()
 {
 	std::string result;
 	for (int i = 0; i < elements.size(); ++i)
-		result += std::to_string(elements[i].value) + " ";
+		result += notstd::to_string(elements[i].value) + " ";
 	return result;
 }
 
