@@ -65,6 +65,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_file_system-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">FileSystem Class Reference</div>  </div>
@@ -90,11 +91,18 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a283a11b858b6b58140c0ad86248044a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_file_info.html">FileInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a283a11b858b6b58140c0ad86248044a4">root</a></td></tr>
 <tr class="separator:a283a11b858b6b58140c0ad86248044a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e45773242a2c56869bee1507f9b15a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a35e45773242a2c56869bee1507f9b15a">printedSystem</a></td></tr>
+<tr class="separator:a35e45773242a2c56869bee1507f9b15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8ea3617d5626f0e4196c7c176a43ae25"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a8ea3617d5626f0e4196c7c176a43ae25">printNode</a> (const std::string &amp;prefix, const <a class="el" href="class_file_info.html">FileInfo</a> *node, bool isLast)</td></tr>
 <tr class="separator:a8ea3617d5626f0e4196c7c176a43ae25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a6a7479ba54fc4f43b11c04430a32682b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a6a7479ba54fc4f43b11c04430a32682b">to_string</a> (<a class="el" href="class_file_system.html">FileSystem</a> const &amp;self)</td></tr>
+<tr class="separator:a6a7479ba54fc4f43b11c04430a32682b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab57f92f8bd2e0aadb5dcc9c9eacc8706"></a>
@@ -132,7 +140,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor Imports All subdirectories and files from this pc file system </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">realPath</td><td>Full path of the existing directory. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">realPath</td><td>Full path of the existing directory. </td></tr>
   </table>
   </dd>
 </dl>
@@ -318,7 +326,56 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a6a7479ba54fc4f43b11c04430a32682b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a7479ba54fc4f43b11c04430a32682b">&#9670;&nbsp;</a></span>to_string</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_file_system.html">FileSystem</a> const &amp;&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Print function for std::to_string overriding. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td><a class="el" href="class_file_system.html">FileSystem</a> self instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>result of <a class="el" href="class_file_system.html#ae347e908d2876531e66693340f4b89e8">FileSystem::print()</a>. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a35e45773242a2c56869bee1507f9b15a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e45773242a2c56869bee1507f9b15a">&#9670;&nbsp;</a></span>printedSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string FileSystem::printedSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Contains already printed filesystem. </p>
+
+</div>
+</div>
 <a id="a283a11b858b6b58140c0ad86248044a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a283a11b858b6b58140c0ad86248044a4">&#9670;&nbsp;</a></span>root</h2>
 
