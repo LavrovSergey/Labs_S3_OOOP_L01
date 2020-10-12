@@ -61,6 +61,9 @@ public:
 	*/
 	FileInfo(std::string name, DateTime dateTimeCreation, uint64_t length, FileType fileType, std::string symlinkTarget = "");
 
+	/*! Default constructor*/
+	FileInfo();
+
 	/*! Recursive reads full path of file from root.
 	* \returns Full path in string format.
 	*/

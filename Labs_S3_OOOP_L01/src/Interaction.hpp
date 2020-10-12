@@ -15,21 +15,30 @@
 #include "PriorQueue/List/LinkedList.hpp"
 #include "PriorQueue/Tree/TreeAVL.hpp"
 #include "FileSystem/FileSystem.hpp"
+#include "FileSystem/SearchPattern.hpp"
 
 
 /*! Ñlass for the menu to interact with my classes.*/
 class Interactor
 {
 public:
-	/* Object of PriorQueue with value of type int.*/
+
+
+	/*! Object of PriorQueue with value of type int.*/
 	inline static PriorQueue<int>* priorQueueI;
 
-	/* Object of PriorQueue with value of type file system.*/
+	/*! Object of PriorQueue with value of type file system.*/
 	inline static PriorQueue<FileSystem>* priorQueueF;
 
-	/* Object fylesystem.*/
+	/*! Object fylesystem.*/
 	inline static FileSystem* fileSystem;
 
+
+	/*! Gets file type from console*/
+	static FileType enterFileType();
+
+	/*! Reads line of text*/
+	static std::string readLine();
 
 
 	/*! Creates Priority queue <int> of type List, deletes previous queue.*/

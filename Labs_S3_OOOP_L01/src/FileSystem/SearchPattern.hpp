@@ -26,6 +26,14 @@ struct SearchPattern
 
 	/*! Defines if search by type is enabled. FileInfo::fileType is used as parameter.*/
 	bool toSearchByType;
+
+	/*! Creates empty pattern*/
+	SearchPattern() :
+		searchInfo(FileInfo()),
+		toSearchByName(false), 
+		toSearchByDate(false),
+		toSearchBySize(false),
+		toSearchByType(false){};
 };
 
 #endif // !SEARCH_PATTERN_HPP

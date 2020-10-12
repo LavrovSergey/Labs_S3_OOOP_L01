@@ -18,6 +18,10 @@ FileInfo::FileInfo(
     this->symlinkTarget = symlinkTarget;
 }
 
+FileInfo::FileInfo()
+{
+}
+
 std::string FileInfo::getFullPath()
 {
     if (!parent)

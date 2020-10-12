@@ -1,6 +1,62 @@
 #include "Interaction.hpp"
 
 
+FileType Interactor::enterFileType()
+{
+	char answer;
+	std::cout << "Enter type file \n(Regular [f]ile, [D]irectory, Symbolic [l]ink, FIF[O] special, [B]lock special, [C]haracter special, [S]ocket:" << std::endl;
+	std::cin >> answer;
+	switch (answer)
+	{
+		case 'f':
+		case 'F':
+			return FileType::file;
+			break;
+
+		case 'd':
+		case 'D':
+			return FileType::directory;
+			break;
+
+		case 'l':
+		case 'L':
+			return FileType::link;
+			break;
+
+		case 'o':
+		case 'O':
+			return FileType::fifo;
+			break;
+
+		case 'b':
+		case 'B':
+			return FileType::block;
+			break;
+
+		case 'c':
+		case 'C':
+			return FileType::character;
+			break;
+
+		case 's':
+		case 'S':
+			return FileType::soket;
+			break;
+
+		default:
+			return FileType::file;
+			break;
+	}
+}
+
+std::string Interactor::readLine()
+{
+	std::string line;
+	while (line.size() == 0)
+		std::getline(std::cin, line);
+	return line;
+}
+
 void Interactor::function_createList_int()
 {
 	if (priorQueueI)
@@ -176,25 +232,84 @@ void Interactor::function_filesystem_addFile()
 {
 	if (fileSystem)
 	{
-		std::cout << "Enter path" << std::endl;
-		std::string path;
-		std::getline(std::cin, path);
-		std::cout << "Enter file size" << std::endl;
-		int size; std::cin >> size;
-		fileSystem->createFile(path, 0, size, FileType::file);
-		std::cout << "Added" << std::endl;
+		std::cout << "\nEnter path" << std::endl;
+		std::string path = readLine();
+
+		std::cout << "\nEnter file size" << std::endl;
+		uint64_t size; 
+		std::cin >> size;
+
+		std::cout << "\nEnter date of creation (yyyy-MM-dd HH-mm-ss) :" << std::endl;
+		DateTime time(readLine());
+
+		std::cout << "\n";
+
+		FileType type = enterFileType();
+
+		fileSystem->createFile(path, time, size, type);
+
+		std::cout << "\nAdded." << std::endl;
 		wait();
 	}
 }
 
 void Interactor::function_filesystem_search()
 {
-	std::cout << "Enter name" << std::endl;
-	std::string path;
-	std::getline(std::cin, path);
-	/*auto result = fileSystem->searchByName(path);
-	for (auto& i : result)
-		std::cout << i << std::endl;*/
+	SearchPattern pattern;
+	char answer;
+
+
+	std::cout << "Search by name? (y/n)" << std::endl;
+	std::cin >> answer; 
+	if (answer == 'Y' || answer == 'y')
+	{
+		pattern.toSearchByName = true;
+		std::cout << "Enter name :" << std::endl;
+		pattern.searchInfo.name = readLine();
+	}
+
+	std::cout << "Search by date? (y/n)" << std::endl;
+	std::cin >> answer;
+	if (answer == 'Y' || answer == 'y')
+	{
+		pattern.toSearchByDate = true;
+		std::cout << "Enter date (yyyy-MM-dd HH-mm-ss) :" << std::endl;
+		pattern.searchInfo.dateTimeCreation = DateTime(readLine());
+	}
+
+	std::cout << "Search by size? (y/n)" << std::endl;
+	std::cin >> answer;
+	if (answer == 'Y' || answer == 'y')
+	{
+		pattern.toSearchBySize = true;
+		std::cout << "Enter size in bytes :" << std::endl;
+		uint64_t length;
+		std::cin >> length;
+		pattern.searchInfo.length = length;
+	}
+
+	std::cout << "Search by type? (y/n)" << std::endl;
+	std::cin >> answer;
+	if (answer == 'Y' || answer == 'y')
+	{
+		pattern.toSearchByType = true;
+		pattern.searchInfo.fileType = enterFileType();
+	}
+
+	std::cout << "Search by ALL parameters or Any parameter (A/O):" << std::endl;
+	std::cin >> answer;
+
+	auto result =
+		answer == 'A' || answer == 'a' ?
+		fileSystem->search(pattern, true) :
+		fileSystem->search(pattern, false);
+
+	if (result.size() == 0)
+		std::cout << "No files found." << std::endl;
+	else
+		for (auto& i : result)
+			std::cout << i->getFullPath() << std::endl;
+
 	wait();
 }
 
@@ -203,11 +318,6 @@ void Interactor::function_filesystem_print()
 	std::cout << fileSystem->print();
 	wait();
 }
-
-
-
-
-
 
 void Interactor::wait()
 {
