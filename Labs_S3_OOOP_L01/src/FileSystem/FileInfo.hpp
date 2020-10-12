@@ -14,6 +14,9 @@
 #include "FileType.hpp"
 #include "../../../Easy_CPP_DateTime/EasyDateTime.hpp"
 
+/*! Forward declaration so the compiler knows what SearchPattern is.*/
+struct SearchPattern;
+
 /*! File info class
 * Information about file system objects - files and directories (name, size, creation time, modification time, file type). 
 * Calculates the full path to the file / directory. 
@@ -69,7 +72,17 @@ public:
 	*/
 	void createFile(FileInfo* file);
 
-	
+	/*! Checks if file info matches ANY search pattern set.
+	* \param[in] pattern Search pattern set.
+	* \returns true if matches.
+	*/
+	bool isMatchesPatternOR(SearchPattern pattern);
+
+	/*! Checks if file info matches ALL search pattern set.
+	* \param[in] pattern Search pattern set.
+	* \returns true if matches.
+	*/
+	bool isMatchesPatternAND(SearchPattern pattern);
 };
 
 #endif // !FILE_INFO_HPP

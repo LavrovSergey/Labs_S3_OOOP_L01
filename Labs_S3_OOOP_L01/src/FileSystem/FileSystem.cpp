@@ -76,26 +76,36 @@ FileSystem::FileSystem(std::string realPath)
     printedSystem = print();
 }
 
-std::vector<FileInfo*> FileSystem::searchByName(FileInfo* searchFrom, std::string pattern)
+std::vector<FileInfo*> FileSystem::search(FileInfo* searchFrom, SearchPattern pattern, bool hasPatternAND)
 {
     std::vector<FileInfo*> results;
 
     //if currrent matches pattern
-    if (searchFrom->name.find(pattern) != std::string::npos)
-        results.push_back(searchFrom);
+   
+    if (hasPatternAND)
+    {
+        if (searchFrom->isMatchesPatternAND(pattern))
+            results.push_back(searchFrom);
+    }
+    else
+    {
+        if (searchFrom->isMatchesPatternOR(pattern))
+            results.push_back(searchFrom);
+    }
+
 
     //search in all children
     for (auto& i : searchFrom->children)
     {
-        auto subresult = searchByName(i, pattern);
+        auto subresult = search(i, pattern, hasPatternAND);
         results.insert(results.end(), subresult.begin(), subresult.end());
     }
     return results;
 }
 
-std::vector<FileInfo*> FileSystem::searchByName(std::string pattern)
+std::vector<FileInfo*> FileSystem::search(SearchPattern pattern, bool hasPatternAND)
 {
-    return searchByName(root, pattern);
+    return search(root, pattern, hasPatternAND);
 }
 
 FileInfo* FileSystem::createFile(std::string path, DateTime dateTimeCreation, uint64_t length, FileType fileType, std::string symlinkTarget)

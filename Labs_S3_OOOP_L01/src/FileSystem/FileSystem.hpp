@@ -15,6 +15,7 @@
 
 #include "FileInfo.hpp"
 #include "../Helper/Helper.hpp"
+#include "../FileSystem/SearchPattern.hpp"
 
 namespace fs = std::filesystem;
 
@@ -23,6 +24,14 @@ class FileSystem
 
 	/*! Prints*/
 	std::string printNode(const std::string& prefix, const FileInfo* node, bool isLast);
+
+	/*! Searches for pattern in file names
+	* \param[in] searchFrom Root of search.
+	* \param[in] pattern Set of search patterns.
+	* \param[in] hasPatternAND If set true all parameters must match, else at least one.
+	* \returns List of found files.
+	*/
+	std::vector<FileInfo*> search(FileInfo* searchFrom, SearchPattern pattern, bool hasPatternAND);
 public:
 	/*! File system root*/
 	FileInfo* root;
@@ -42,17 +51,11 @@ public:
 	FileSystem(std::string realPath);
 
 	/*! Searches for pattern in file names
-	* \param[in] searchFrom Root of search.
-	* \param[in] pattern String search pattern (".psd", "PHOTO_", "kursach.docx", etc).
+	* \param[in] pattern Set of search patterns.
+	* \param[in] hasPatternAND If set true all parameters must match, else at least one.
 	* \returns List of found files.
 	*/
-	std::vector<FileInfo*> searchByName(FileInfo* searchFrom, std::string pattern);
-
-	/*! Searches for pattern in file names
-	* \param[in] pattern String search pattern (".psd", "PHOTO_", "kursach.docx", etc).
-	* \returns List of found files.
-	*/
-	std::vector<FileInfo*> searchByName(std::string pattern);
+	std::vector<FileInfo*> search(SearchPattern pattern, bool hasPatternAND);
 
 	/*! Creates file at given path.
 	* If there is no such path, it will be created.

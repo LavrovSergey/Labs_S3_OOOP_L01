@@ -71,6 +71,7 @@ int main()
 	menuFileSystem->Add("Create empty",					Interactor::function_filesystem_create);
 	menuFileSystem->Add("Create from real filesystem",	Interactor::function_filesystem_createReal);
 	menuFileSystem->Add("Add file",						Interactor::function_filesystem_addFile);
+	menuFileSystem->Add("Search for",					Interactor::function_filesystem_search);
 	menuFileSystem->Add("Print",						Interactor::function_filesystem_print);
 
 	root->Add("Work with file system", menuFileSystem);

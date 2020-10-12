@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\FileSystem\SearchPattern.hpp" />
     <ClInclude Include="src\Helper\Helper.hpp" />
     <ClInclude Include="src\FileSystem\FileSystem.hpp" />
     <ClInclude Include="src\FileSystem\FileInfo.hpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="..\FlawlessMenu\FlawlessMenu\lib\FlawlessMenu.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\FileSystem\SearchPattern.cpp" />
     <ClCompile Include="src\Helper\Helper.cpp" />
     <ClCompile Include="src\FileSystem\FileSystem.cpp" />
     <ClCompile Include="src\FileSystem\FileInfo.cpp" />

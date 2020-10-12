@@ -192,9 +192,9 @@ void Interactor::function_filesystem_search()
 	std::cout << "Enter name" << std::endl;
 	std::string path;
 	std::getline(std::cin, path);
-	auto result = fileSystem->searchByName(path);
+	/*auto result = fileSystem->searchByName(path);
 	for (auto& i : result)
-		std::cout << i << std::endl;
+		std::cout << i << std::endl;*/
 	wait();
 }
 
@@ -203,6 +203,9 @@ void Interactor::function_filesystem_print()
 	std::cout << fileSystem->print();
 	wait();
 }
+
+
+
 
 
 
