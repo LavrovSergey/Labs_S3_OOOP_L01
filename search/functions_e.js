@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['searchbyname_235',['searchByName',['../class_file_system.html#a9714920b2ffeb7918a1f34fa1dfc59de',1,'FileSystem::searchByName(FileInfo *searchFrom, std::string pattern)'],['../class_file_system.html#a677850491027ca4dacf8b33273305c82',1,'FileSystem::searchByName(std::string pattern)']]],
-  ['settime_236',['SetTime',['../class_date_time.html#a357925b49eca9cc738b98f9d74bfb445',1,'DateTime']]],
-  ['splitstring_237',['splitString',['../class_helper.html#a72ecf244785351a3c3e53372c2fe55aa',1,'Helper']]],
-  ['start_238',['Start',['../class_flawless_menu_1_1_menu.html#a5852224aadf50021a964bc4a9f34747e',1,'FlawlessMenu::Menu']]]
+  ['search_254',['search',['../class_file_system.html#a35b5b65cf7d505b83517cc6aff2c100a',1,'FileSystem::search(FileInfo *searchFrom, SearchPattern pattern, bool hasPatternAND)'],['../class_file_system.html#a1f312fbb3f98ad46c5687dddcad29d8f',1,'FileSystem::search(SearchPattern pattern, bool hasPatternAND)']]],
+  ['searchpattern_255',['SearchPattern',['../struct_search_pattern.html#a25b935a020c0400706b03725deeda05c',1,'SearchPattern']]],
+  ['settime_256',['SetTime',['../class_date_time.html#a357925b49eca9cc738b98f9d74bfb445',1,'DateTime']]],
+  ['splitstring_257',['splitString',['../class_helper.html#a72ecf244785351a3c3e53372c2fe55aa',1,'Helper']]],
+  ['start_258',['Start',['../class_flawless_menu_1_1_menu.html#a5852224aadf50021a964bc4a9f34747e',1,'FlawlessMenu::Menu']]]
 ];

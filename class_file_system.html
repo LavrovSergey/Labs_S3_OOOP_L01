@@ -78,10 +78,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab57f92f8bd2e0aadb5dcc9c9eacc8706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab10427a0533e3d8f03bfdb88e4ccaa60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#ab10427a0533e3d8f03bfdb88e4ccaa60">FileSystem</a> (std::string realPath)</td></tr>
 <tr class="separator:ab10427a0533e3d8f03bfdb88e4ccaa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9714920b2ffeb7918a1f34fa1dfc59de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a9714920b2ffeb7918a1f34fa1dfc59de">searchByName</a> (<a class="el" href="class_file_info.html">FileInfo</a> *searchFrom, std::string pattern)</td></tr>
-<tr class="separator:a9714920b2ffeb7918a1f34fa1dfc59de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a677850491027ca4dacf8b33273305c82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a677850491027ca4dacf8b33273305c82">searchByName</a> (std::string pattern)</td></tr>
-<tr class="separator:a677850491027ca4dacf8b33273305c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f312fbb3f98ad46c5687dddcad29d8f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a1f312fbb3f98ad46c5687dddcad29d8f">search</a> (<a class="el" href="struct_search_pattern.html">SearchPattern</a> pattern, bool hasPatternAND)</td></tr>
+<tr class="separator:a1f312fbb3f98ad46c5687dddcad29d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d5f394a39e873614176b89b4862e814"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_file_info.html">FileInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a7d5f394a39e873614176b89b4862e814">createFile</a> (std::string path, <a class="el" href="class_date_time.html">DateTime</a> dateTimeCreation, uint64_t length, <a class="el" href="_file_type_8hpp.html#a2c794c5c13ab4dd7e65bad031dbe41c3">FileType</a> fileType, std::string symlinkTarget=&quot;&quot;)</td></tr>
 <tr class="separator:a7d5f394a39e873614176b89b4862e814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae347e908d2876531e66693340f4b89e8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#ae347e908d2876531e66693340f4b89e8">print</a> ()</td></tr>
@@ -98,6 +96,8 @@ Public Attributes</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8ea3617d5626f0e4196c7c176a43ae25"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a8ea3617d5626f0e4196c7c176a43ae25">printNode</a> (const std::string &amp;prefix, const <a class="el" href="class_file_info.html">FileInfo</a> *node, bool isLast)</td></tr>
 <tr class="separator:a8ea3617d5626f0e4196c7c176a43ae25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b5b65cf7d505b83517cc6aff2c100a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_system.html#a35b5b65cf7d505b83517cc6aff2c100a">search</a> (<a class="el" href="class_file_info.html">FileInfo</a> *searchFrom, <a class="el" href="struct_search_pattern.html">SearchPattern</a> pattern, bool hasPatternAND)</td></tr>
+<tr class="separator:a35b5b65cf7d505b83517cc6aff2c100a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -265,14 +265,17 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a9714920b2ffeb7918a1f34fa1dfc59de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9714920b2ffeb7918a1f34fa1dfc59de">&#9670;&nbsp;</a></span>searchByName() <span class="overload">[1/2]</span></h2>
+<a id="a35b5b65cf7d505b83517cc6aff2c100a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35b5b65cf7d505b83517cc6aff2c100a">&#9670;&nbsp;</a></span>search() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt; FileSystem::searchByName </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt; FileSystem::search </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_file_info.html">FileInfo</a> *&#160;</td>
           <td class="paramname"><em>searchFrom</em>, </td>
@@ -280,8 +283,56 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>pattern</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_search_pattern.html">SearchPattern</a>&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hasPatternAND</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Searches for pattern in file names </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">searchFrom</td><td>Root of search. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>Set of search patterns. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hasPatternAND</td><td>If set true all parameters must match, else at least one. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>List of found files. </dd></dl>
+
+</div>
+</div>
+<a id="a1f312fbb3f98ad46c5687dddcad29d8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f312fbb3f98ad46c5687dddcad29d8f">&#9670;&nbsp;</a></span>search() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt; FileSystem::search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_search_pattern.html">SearchPattern</a>&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hasPatternAND</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -292,33 +343,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Searches for pattern in file names </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">searchFrom</td><td>Root of search. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>String search pattern (".psd", "PHOTO_", "kursach.docx", etc). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>List of found files. </dd></dl>
-
-</div>
-</div>
-<a id="a677850491027ca4dacf8b33273305c82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a677850491027ca4dacf8b33273305c82">&#9670;&nbsp;</a></span>searchByName() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="class_file_info.html">FileInfo</a> * &gt; FileSystem::searchByName </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>pattern</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Searches for pattern in file names </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>String search pattern (".psd", "PHOTO_", "kursach.docx", etc). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>Set of search patterns. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hasPatternAND</td><td>If set true all parameters must match, else at least one. </td></tr>
   </table>
   </dd>
 </dl>

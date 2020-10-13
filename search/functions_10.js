@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wait_242',['wait',['../class_interactor.html#a0370e3bcb705f3ea3cd850f0a984f5df',1,'Interactor']]]
+  ['wait_262',['wait',['../class_interactor.html#a0370e3bcb705f3ea3cd850f0a984f5df',1,'Interactor']]]
 ];
