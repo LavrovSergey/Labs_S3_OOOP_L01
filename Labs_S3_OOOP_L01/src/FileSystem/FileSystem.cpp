@@ -33,7 +33,18 @@ std::string FileSystem::printNode(const std::string& prefix, const FileInfo* nod
         result += line;
 
         //add node value
-        result += type + node->name + "\n";
+        result += type + node->name;
+
+        std::string size = std::to_string(node->length) + " bytes";
+        if (node->fileType == FileType::file)
+            result += "\t\t" + size;
+        
+        auto date = node->dateTimeCreation;
+        if (node->fileType == FileType::file)
+            result += "\t\t" + date.ToString();
+
+        result += "\n";
+
         for (auto& i : node->children)
             result += printNode(prefix + (isLast ? "    " : "|   "), i, i == node->children.back());
     }

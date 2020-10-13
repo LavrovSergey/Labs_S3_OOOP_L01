@@ -230,31 +230,40 @@ void Interactor::function_filesystem_createReal()
 
 void Interactor::function_filesystem_addFile()
 {
-	if (fileSystem)
+	if (!fileSystem)
 	{
-		std::cout << "\nEnter path" << std::endl;
-		std::string path = readLine();
-
-		std::cout << "\nEnter file size" << std::endl;
-		uint64_t size; 
-		std::cin >> size;
-
-		std::cout << "\nEnter date of creation (yyyy-MM-dd HH-mm-ss) :" << std::endl;
-		DateTime time(readLine());
-
-		std::cout << "\n";
-
-		FileType type = enterFileType();
-
-		fileSystem->createFile(path, time, size, type);
-
-		std::cout << "\nAdded." << std::endl;
-		wait();
+		std::cout << "Not created" << std::endl;
+		return;
 	}
+
+	std::cout << "\nEnter path" << std::endl;
+	std::string path = readLine();
+
+	std::cout << "\nEnter file size" << std::endl;
+	uint64_t size; 
+	std::cin >> size;
+
+	std::cout << "\nEnter date of creation (yyyy-MM-dd HH-mm-ss) :" << std::endl;
+	DateTime time(readLine());
+
+	std::cout << "\n";
+
+	FileType type = enterFileType();
+
+	fileSystem->createFile(path, time, size, type);
+
+	std::cout << "\nAdded." << std::endl;
+	wait();
 }
 
 void Interactor::function_filesystem_search()
 {
+	if (!fileSystem)
+	{
+		std::cout << "Not created" << std::endl;
+		return;
+	}
+
 	SearchPattern pattern;
 	char answer;
 
@@ -315,6 +324,12 @@ void Interactor::function_filesystem_search()
 
 void Interactor::function_filesystem_print()
 {
+	if (!fileSystem)
+	{
+		std::cout << "Not created" << std::endl;
+		return;
+	}
+
 	std::cout << fileSystem->print();
 	wait();
 }
